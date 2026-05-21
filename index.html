@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -697,73 +697,15 @@
     margin-bottom: 20px;
   }
 
-  /* ─── HAMBURGER ─── */
-  .hamburger {
-    display: none;
-    flex-direction: column; gap: 5px;
-    background: none; border: none; cursor: pointer; padding: 4px;
-  }
-  .hamburger span {
-    display: block; width: 24px; height: 2px;
-    background: var(--dark-brown); border-radius: 2px;
-    transition: all 0.3s;
-  }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  /* ─── MOBILE MENU ─── */
-  .mobile-menu {
-    display: none;
-    position: fixed; top: 65px; left: 0; right: 0;
-    background: var(--warm-white);
-    border-bottom: 1px solid var(--sand);
-    z-index: 99;
-    padding: 20px 30px 28px;
-    flex-direction: column;
-    box-shadow: 0 10px 30px rgba(61,43,31,0.08);
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a {
-    padding: 14px 0;
-    font-size: 1rem; font-weight: 400;
-    color: var(--text-dark);
-    text-decoration: none;
-    border-bottom: 1px solid var(--sand);
-  }
-  .mobile-menu a:last-child { border-bottom: none; color: var(--gold); font-weight: 500; }
-
-  /* ─── TABLET 960px ─── */
+  /* ─── RESPONSIVE BASICS ─── */
   @media (max-width: 960px) {
     nav { padding: 20px 30px; }
     .nav-links { display: none; }
-    .hamburger { display: flex; }
-    .scroll-dot { display: none; }
     #hero, #about, #contacto { grid-template-columns: 1fr; padding: 80px 30px; }
     #pillars, #planes, #ebooks, #recetas { padding: 80px 30px; }
     .pillars-grid { grid-template-columns: repeat(2, 1fr); }
     .planes-grid, .ebooks-grid, .recipes-grid { grid-template-columns: 1fr; }
     footer { padding: 40px 30px; flex-direction: column; }
-  }
-
-  /* ─── MOBILE 480px ─── */
-  @media (max-width: 480px) {
-    nav { padding: 14px 20px; }
-    .nav-logo { font-size: 1.3rem; }
-    .mobile-menu { top: 56px; }
-    #hero { padding: 100px 20px 50px; gap: 24px; }
-    .hero-eyebrow { font-size: 0.7rem; }
-    .hero-title { font-size: 2.2rem; }
-    .hero-sub { font-size: 0.88rem; }
-    .hero-btns { flex-direction: column; gap: 12px; }
-    .hero-btns a { text-align: center; }
-    .hero-visual img { max-width: 240px !important; }
-    #pillars, #planes, #ebooks, #recetas, #contacto { padding: 50px 20px; }
-    .pillars-grid { grid-template-columns: 1fr; }
-    .section-title { font-size: 1.9rem; }
-    .ebook-body { padding: 18px; }
-    .ebook-cover { height: 130px; }
-    footer { padding: 28px 20px; text-align: center; }
   }
 
   /* ─── MODAL ─── */
@@ -993,6 +935,70 @@
   }
   .preview-analogy p { font-size: 0.83rem; color: var(--text-dark); line-height: 1.65; }
 
+
+  /* ─── HAMBURGER ─── */
+  .hamburger {
+    display: none;
+    flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--dark-brown); border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ─── MOBILE MENU ─── */
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 65px; left: 0; right: 0;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--sand);
+    z-index: 99; padding: 20px 30px 28px;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(61,43,31,0.08);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    padding: 14px 0; font-size: 1rem; font-weight: 400;
+    color: var(--text-dark); text-decoration: none;
+    border-bottom: 1px solid var(--sand);
+  }
+  .mobile-menu a:last-child { border-bottom: none; color: var(--gold); font-weight: 500; }
+
+  /* ─── TABLET 960px ─── */
+  @media (max-width: 960px) {
+    nav { padding: 20px 30px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .scroll-dot { display: none; }
+    #hero, #about, #contacto { grid-template-columns: 1fr; padding: 80px 30px; }
+    #pillars, #planes, #ebooks, #recetas { padding: 80px 30px; }
+    .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+    .planes-grid, .ebooks-grid, .recipes-grid { grid-template-columns: 1fr; }
+    footer { padding: 40px 30px; flex-direction: column; }
+  }
+
+  /* ─── MOBILE 480px ─── */
+  @media (max-width: 480px) {
+    nav { padding: 14px 20px; }
+    .nav-logo { font-size: 1.3rem; }
+    .mobile-menu { top: 56px; }
+    #hero { padding: 100px 20px 50px; gap: 24px; }
+    .hero-title { font-size: 2.2rem; }
+    .hero-btns { flex-direction: column; gap: 12px; }
+    .hero-btns a { text-align: center; }
+    .hero-visual img { max-width: 240px !important; }
+    #pillars, #planes, #ebooks, #recetas, #contacto { padding: 50px 20px; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 1.9rem; }
+    .ebook-body { padding: 18px; }
+    footer { padding: 28px 20px; text-align: center; }
+  }
+
 </style>
 </head>
 <body>
@@ -1008,20 +1014,7 @@
     <li><a href="#contacto">Contacto</a></li>
     <li><a href="#contacto" class="nav-cta">Agendar Consulta</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#pillars" onclick="closeMobileMenu()">Enfoque</a>
-  <a href="#planes" onclick="closeMobileMenu()">Planes</a>
-  <a href="#ebooks" onclick="closeMobileMenu()">E-books</a>
-  <a href="#recetas" onclick="closeMobileMenu()">Recetas</a>
-  <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
-  <a href="#contacto" onclick="closeMobileMenu()">Agendar Consulta →</a>
-</div>
 
 <!-- SCROLL DOTS -->
 <div class="scroll-dot">
@@ -1127,9 +1120,9 @@
   <div class="about-text">
     <div class="section-label">Sobre mí</div>
     <h2 class="section-title">Hola, soy<br><em>Micaela</em></h2>
-    <p class="about-body" contenteditable="true">Soy wellness coach especializada en bienestar integral. Mi misión es acompañarte a construir una vida más saludable, energética y plena â€” sin extremos, sin dietas imposibles, sin culpa.</p>
+    <p class="about-body" contenteditable="true">Soy wellness coach especializada en bienestar integral. Mi misión es acompañarte a construir una vida más saludable, energética y plena — sin extremos, sin dietas imposibles, sin culpa.</p>
     <p class="about-body" contenteditable="true">Trabajo desde un enfoque funcional y humano, entendiendo que cada persona es única. Integro nutrición, hormonas, movimiento y hábitos para que los cambios sean reales y duraderos.</p>
-    <p class="about-body" contenteditable="true">Creo profundamente que el bienestar no es un lujo â€” es un derecho. Y estoy aquí para ayudarte a alcanzarlo.</p>
+    <p class="about-body" contenteditable="true">Creo profundamente que el bienestar no es un lujo — es un derecho. Y estoy aquí para ayudarte a alcanzarlo.</p>
     <div class="about-stats">
       <div class="stat-item">
         <div class="stat-number" contenteditable="true">500+</div>
@@ -1151,7 +1144,7 @@
     </div>
     <div class="ornamental-divider">· · ·</div>
     <div class="about-quote">"Tu cuerpo no es tu enemigo. Es el lugar donde vives. Aprendamos a cuidarlo juntas."</div>
-    <div class="about-quote-source">â€” Micaela Andrea Dolar · Wellness Coach</div>
+    <div class="about-quote-source">— Micaela Andrea Dolar · Wellness Coach</div>
     <br>
     <p style="font-size: 0.85rem; color: var(--text-light); line-height: 1.8;">Formación en nutrición funcional, coaching de salud, fisiología del ejercicio y salud hormonal femenina y masculina. Consultorio presencial en Río Cuarto y atención online disponible.</p>
   </div>
@@ -1192,7 +1185,7 @@
       <div class="plan-card-bg" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80');"></div>
       <div class="plan-card-inner">
       <div class="plan-number">02</div>
-      <span class="plan-tag">â­ Más elegido</span>
+      <span class="plan-tag">⭐ Más elegido</span>
       <h3 class="plan-title">Regulación Hormonal & Disruptores</h3>
       <p class="plan-desc">Equilibrá tus hormonas, identificá disruptores endocrinos en tu vida cotidiana y recuperá tu bienestar hormonal de forma natural.</p>
       <div class="plan-price-wrap">
@@ -1332,7 +1325,7 @@
       <div class="plan-card-bg" style="background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80');"></div>
       <div class="plan-card-inner" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
         <div>
-          <span style="background: var(--dark-brown); color: var(--cream); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; display: inline-block; margin-bottom: 20px;">ðŸ’¬ Personalizado</span>
+          <span style="background: var(--dark-brown); color: var(--cream); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; display: inline-block; margin-bottom: 20px;">💬 Personalizado</span>
           <h3 class="plan-title" style="font-size: 2rem; color: var(--dark-brown);">Consulta Personalizada</h3>
           <p class="plan-desc" style="color: var(--text-mid); font-size: 0.95rem; margin-bottom: 28px;">Trabajo 1 a 1 conmigo. Analizamos tu caso en profundidad y creamos un plan diseñado exclusivamente para vos. Incluye seguimiento por WhatsApp durante todo el proceso.</p>
           <div class="plan-price-wrap">
@@ -1466,19 +1459,19 @@
   </div>
   <div class="testimonials-grid">
     <div class="testimonial-card">
-      <div class="testimonial-stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="testimonial-stars">★★★★★</div>
       <div class="testimonial-text" contenteditable="true">"Empecé sin creer demasiado en los cambios y a las 3 semanas ya dormía mejor, tenía más energía y la hinchazón desapareció. No puedo creer que sea tan posible."</div>
       <div class="testimonial-author" contenteditable="true">Valentina M.</div>
       <div class="testimonial-role" contenteditable="true">Plan Metabolismo & Sueño</div>
     </div>
     <div class="testimonial-card">
-      <div class="testimonial-stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="testimonial-stars">★★★★★</div>
       <div class="testimonial-text" contenteditable="true">"Después del postparto sentía que no era yo. Con el plan hormonal entendí qué estaba pasando en mi cuerpo y empecé a recuperarme de verdad."</div>
       <div class="testimonial-author" contenteditable="true">Carolina T.</div>
       <div class="testimonial-role" contenteditable="true">Plan Regulación Hormonal</div>
     </div>
     <div class="testimonial-card">
-      <div class="testimonial-stars">â˜…â˜…â˜…â˜…â˜…</div>
+      <div class="testimonial-stars">★★★★★</div>
       <div class="testimonial-text" contenteditable="true">"Llevaba años con el SIBO sin saber qué era. La guía me cambió la vida. Por fin entendí qué comer y cómo sanar mi intestino sin desesperación."</div>
       <div class="testimonial-author" contenteditable="true">Lucía R.</div>
       <div class="testimonial-role" contenteditable="true">Guía SIBO</div>
@@ -1614,28 +1607,28 @@
     <p style="color: var(--text-mid); font-size: 0.9rem; margin-top: 16px; line-height: 1.8;" contenteditable="true">Estoy disponible para consultas personalizadas, tanto presenciales como online. Escribime y coordinamos una primera sesión de valoración.</p>
     <div class="contact-info-list">
       <div class="contact-item">
-        <div class="contact-icon-wrap">ðŸ“±</div>
+        <div class="contact-icon-wrap">📱</div>
         <div>
           <div class="contact-detail-label">WhatsApp</div>
           <div class="contact-detail-value"><a href="https://wa.me/543584012123" target="_blank" style="color:var(--dark-brown);text-decoration:none;">+54 358 401-2123 →</a></div>
         </div>
       </div>
       <div class="contact-item">
-        <div class="contact-icon-wrap">ðŸ“§</div>
+        <div class="contact-icon-wrap">📧</div>
         <div>
           <div class="contact-detail-label">Email</div>
           <div class="contact-detail-value"><a href="mailto:dolarmicaela@gmail.com" style="color:var(--dark-brown);text-decoration:none;">dolarmicaela@gmail.com →</a></div>
         </div>
       </div>
       <div class="contact-item">
-        <div class="contact-icon-wrap">ðŸ“</div>
+        <div class="contact-icon-wrap">📍</div>
         <div>
           <div class="contact-detail-label">Ubicación</div>
           <div class="contact-detail-value">Río Cuarto, Córdoba, Argentina · También online</div>
         </div>
       </div>
       <div class="contact-item">
-        <div class="contact-icon-wrap">ðŸ“¸</div>
+        <div class="contact-icon-wrap">📸</div>
         <div>
           <div class="contact-detail-label">Instagram</div>
           <div class="contact-detail-value"><a href="https://instagram.com/vitta.inc" target="_blank" style="color:var(--dark-brown);text-decoration:none;">@vitta.inc →</a></div>
@@ -1656,7 +1649,7 @@
     <div class="form-group">
       <label>¿Qué te interesa?</label>
       <select>
-        <option>â€” Elegí una opción â€”</option>
+        <option>— Elegí una opción —</option>
         <option>Consulta personalizada</option>
         <option>Plan Metabolismo & Sueño</option>
         <option>Plan Regulación Hormonal</option>
@@ -1688,13 +1681,13 @@
     <a href="#recetas">Recetas</a>
     <a href="#contacto">Contacto</a>
   </div>
-  <div class="footer-copy">© 2025 VITTA Bienestar Integral · Todos los derechos reservados · Hecho con ❤ï¸</div>
+  <div class="footer-copy">© 2025 VITTA Bienestar Integral · Todos los derechos reservados · Hecho con ❤️</div>
 </footer>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal()">âœ•</button>
+    <button class="modal-close" onclick="closeModal()">✕</button>
     <h3>Obtener e-book</h3>
     <p>Completá tus datos y te enviamos el acceso inmediatamente a tu email.</p>
     <div class="form-group">
@@ -1713,14 +1706,17 @@
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-  });
-  function closeMobileMenu() {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
   }
+  function closeMobileMenu() {
+    if (hamburger) hamburger.classList.remove('open');
+    if (mobileMenu) mobileMenu.classList.remove('open');
+  }
+
   // Modal
   function openModal() {
     document.getElementById('modalOverlay').classList.add('active');
@@ -1778,15 +1774,15 @@ function closePreview(e, id) {
 <div class="preview-overlay" id="previewPlan1" onclick="closePreview(event, 'previewPlan1')">
   <div class="preview-modal">
     <div class="preview-header">
-      <button class="preview-close" onclick="document.getElementById('previewPlan1').classList.remove('active')">âœ•</button>
+      <button class="preview-close" onclick="document.getElementById('previewPlan1').classList.remove('active')">✕</button>
       <div class="preview-eyebrow">Vista previa · Plan 1</div>
       <div class="preview-title">Metabolismo, Hidratación & Sueño</div>
     </div>
 
     <div class="preview-tabs">
-      <button class="preview-tab active" onclick="switchTab(this, 'tab-metabolismo')">ðŸ”¥ Metabolismo</button>
-      <button class="preview-tab" onclick="switchTab(this, 'tab-hidratacion')">ðŸ’§ Hidratación</button>
-      <button class="preview-tab" onclick="switchTab(this, 'tab-descanso')">ðŸŒ™ Descanso</button>
+      <button class="preview-tab active" onclick="switchTab(this, 'tab-metabolismo')">🔥 Metabolismo</button>
+      <button class="preview-tab" onclick="switchTab(this, 'tab-hidratacion')">💧 Hidratación</button>
+      <button class="preview-tab" onclick="switchTab(this, 'tab-descanso')">🌙 Descanso</button>
     </div>
 
     <!-- METABOLISMO -->
@@ -1802,7 +1798,7 @@ function closePreview(e, id) {
       <div class="preview-locked">
         <div class="preview-locked-inner">
           <div class="preview-step-show">
-            <h4>2 · Comé cada 4â€“5 horas</h4>
+            <h4>2 · Comé cada 4–5 horas</h4>
             <p>El cuerpo necesita pausas para limpiar y reparar células. Tres comidas completas y bien espaciadas son ideales.</p>
           </div>
           <div class="preview-step-show">
@@ -1819,7 +1815,7 @@ function closePreview(e, id) {
           </div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">4 pasos más + tips exclusivos<br>disponibles al comprar</div>
         </div>
       </div>
@@ -1851,7 +1847,7 @@ function closePreview(e, id) {
           </div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">3 pasos más + guía de electrolitos<br>disponibles al comprar</div>
         </div>
       </div>
@@ -1864,8 +1860,8 @@ function closePreview(e, id) {
         <p>Es como el reloj interno de tu cuerpo. Cuando lo respetás, dormís genial, tenés energía de día y tu cuerpo se repara de noche...</p>
       </div>
       <div class="preview-step-show">
-        <h4>6â€“8 am · Luz solar al despertar</h4>
-        <p>Salí afuera sin lentes de sol los primeros 10â€“20 minutos. La luz entra por tus ojos y le dice al cerebro "¡es de día!" â€” dispara cortisol (energía) y empieza la cuenta regresiva de la melatonina.</p>
+        <h4>6–8 am · Luz solar al despertar</h4>
+        <p>Salí afuera sin lentes de sol los primeros 10–20 minutos. La luz entra por tus ojos y le dice al cerebro "¡es de día!" — dispara cortisol (energía) y empieza la cuenta regresiva de la melatonina.</p>
       </div>
       <div class="preview-locked">
         <div class="preview-locked-inner">
@@ -1879,7 +1875,7 @@ function closePreview(e, id) {
           </div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Protocolo completo de 7 días<br>disponible al comprar</div>
         </div>
       </div>
@@ -1897,7 +1893,7 @@ function closePreview(e, id) {
 <div class="preview-overlay" id="previewPlan2" onclick="closePreview(event, 'previewPlan2')">
   <div class="preview-modal">
     <div class="preview-header">
-      <button class="preview-close" onclick="document.getElementById('previewPlan2').classList.remove('active')">âœ•</button>
+      <button class="preview-close" onclick="document.getElementById('previewPlan2').classList.remove('active')">✕</button>
       <div class="preview-eyebrow">Vista previa · Plan 2</div>
       <div class="preview-title">Regulación Hormonal & Disruptores</div>
     </div>
@@ -1915,11 +1911,11 @@ function closePreview(e, id) {
         <p>Son los mensajeros químicos de tu cuerpo. Regulan tu energía, tu peso, tu estado de ánimo, tu sueño, tu deseo sexual y hasta cómo envejecés. Cuando están en equilibrio, todo fluye.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Estrógenos â€” La hormona femenina principal</h4>
+        <h4>Estrógenos — La hormona femenina principal</h4>
         <p>Regula el ciclo menstrual, protege los huesos, la piel y el corazón. Su equilibrio es clave en todas las etapas: ciclo, postparto, peri y menopausia.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Cortisol â€” La hormona del estrés</h4>
+        <h4>Cortisol — La hormona del estrés</h4>
         <p>En exceso crónico bloquea la progesterona, engorda, inflama y agota la tiroides. Manejarlo es la base de cualquier equilibrio hormonal.</p>
       </div>
       <div class="preview-locked">
@@ -1928,7 +1924,7 @@ function closePreview(e, id) {
           <div class="preview-step-show"><h4>Disruptores endocrinos cotidianos</h4><p>Los enemigos silenciosos en tu cocina, baño y ropa que alteran tus hormonas sin que lo sepas.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">7 hormonas clave + guía de disruptores<br>disponibles al comprar</div>
         </div>
       </div>
@@ -1941,7 +1937,7 @@ function closePreview(e, id) {
         <p>Incluye peri y menopausia, postparto, ciclo menstrual y ejercicio por fase. Diseñado para cada etapa de la vida hormonal femenina.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Fase folicular (días 1-14) â€” Alta energía</h4>
+        <h4>Fase folicular (días 1-14) — Alta energía</h4>
         <p>Los estrógenos favorecen la síntesis proteica. Es el momento ideal para entrenamiento de fuerza pesado, HIIT y cargas máximas. Tu recuperación es más rápida.</p>
       </div>
       <div class="preview-locked">
@@ -1951,7 +1947,7 @@ function closePreview(e, id) {
           <div class="preview-step-show"><h4>Análisis recomendados anuales</h4><p>Qué pedir en el laboratorio y cómo interpretarlo.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Protocolo completo + suplementación<br>disponible al comprar</div>
         </div>
       </div>
@@ -1964,8 +1960,8 @@ function closePreview(e, id) {
         <p>Testosterona, hormona de crecimiento, control del estrógeno masculino. Todo lo que necesita saber un hombre para optimizar su salud hormonal.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Testosterona â€” El combustible androgénico</h4>
-        <p>Zinc, vitamina D, grasas buenas y proteína suficiente son la base. El colesterol es el precursor directo de la testosterona â€” sin grasa no hay hormona.</p>
+        <h4>Testosterona — El combustible androgénico</h4>
+        <p>Zinc, vitamina D, grasas buenas y proteína suficiente son la base. El colesterol es el precursor directo de la testosterona — sin grasa no hay hormona.</p>
       </div>
       <div class="preview-locked">
         <div class="preview-locked-inner">
@@ -1974,7 +1970,7 @@ function closePreview(e, id) {
           <div class="preview-step-show"><h4>Análisis anuales recomendados</h4><p>Testosterona libre, SHBG, cortisol, IGF-1 y más.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Protocolo completo masculino<br>disponible al comprar</div>
         </div>
       </div>
@@ -1992,7 +1988,7 @@ function closePreview(e, id) {
 <div class="preview-overlay" id="previewPlan3" onclick="closePreview(event, 'previewPlan3')">
   <div class="preview-modal">
     <div class="preview-header">
-      <button class="preview-close" onclick="document.getElementById('previewPlan3').classList.remove('active')">âœ•</button>
+      <button class="preview-close" onclick="document.getElementById('previewPlan3').classList.remove('active')">✕</button>
       <div class="preview-eyebrow">Vista previa · Plan 3</div>
       <div class="preview-title">Plan de Entrenamiento de Gimnasio</div>
       <p style="font-size:0.8rem; color:var(--text-light); margin-top:8px;">Adaptado a tu ciclo menstrual · Lunes a Sábado</p>
@@ -2011,11 +2007,11 @@ function closePreview(e, id) {
         <p>El día más importante de la semana para glúteo. Empezás fuerte con ejercicios compuestos y terminás con aislamiento. Cada ejercicio tiene series, reps, descanso y notas de técnica.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Hip Thrust con Barra â€” 4 series · 6-8 reps</h4>
-        <p>El rey del glúteo. RIR 2 â€” terminás la serie sintiendo que podías hacer 2 repeticiones más. Enfocarte en el empuje de cadera, no de espalda. 3 min de descanso.</p>
+        <h4>Hip Thrust con Barra — 4 series · 6-8 reps</h4>
+        <p>El rey del glúteo. RIR 2 — terminás la serie sintiendo que podías hacer 2 repeticiones más. Enfocarte en el empuje de cadera, no de espalda. 3 min de descanso.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Sentadilla Búlgara â€” 3 series · 10-12 reps (x lado)</h4>
+        <h4>Sentadilla Búlgara — 3 series · 10-12 reps (x lado)</h4>
         <p>Tronco ligeramente inclinado hacia adelante para enfocar el glúteo. RIR 2. 2 min de descanso.</p>
       </div>
       <div class="preview-locked">
@@ -2024,7 +2020,7 @@ function closePreview(e, id) {
           <div class="preview-step-show"><h4>Cardio post-entreno</h4><p>LISS 20-30 min. Caminata rápida o inclinada.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Rutina completa de los 6 días<br>disponible al comprar</div>
         </div>
       </div>
@@ -2033,15 +2029,15 @@ function closePreview(e, id) {
     <!-- MARTES -->
     <div class="preview-section" id="g3-martes">
       <div class="preview-analogy" style="background: var(--cream); border-color: var(--taupe);">
-        <div class="preview-analogy-label" style="color: var(--brown);">Martes · Torso â€” Espalda, Hombros & Brazos</div>
+        <div class="preview-analogy-label" style="color: var(--brown);">Martes · Torso — Espalda, Hombros & Brazos</div>
         <p>Día de torso completo. Jalones, remos, press militar, elevaciones laterales y trabajo de brazos. Equilibrio entre estética y funcionalidad.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Jalón al Pecho Prono â€” 4 series · 8-10 reps</h4>
+        <h4>Jalón al Pecho Prono — 4 series · 8-10 reps</h4>
         <p>Llevar la barra a la clavícula, no al pecho. RIR 2. Activa el dorsal ancho y mejora la postura. 2 min de descanso.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Press Militar con Mancuernas â€” 4 series · 6-8 reps</h4>
+        <h4>Press Militar con Mancuernas — 4 series · 6-8 reps</h4>
         <p>Hombro anterior. RIR 2. Control en la bajada para no perder tensión. 2 min de descanso.</p>
       </div>
       <div class="preview-locked">
@@ -2050,7 +2046,7 @@ function closePreview(e, id) {
           <div class="preview-step-show"><h4>Jueves, Viernes y Sábado</h4><p>Cuádriceps, segundo día de torso y HIIT + Core.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Semana completa de entrenamiento<br>disponible al comprar</div>
         </div>
       </div>
@@ -2059,16 +2055,16 @@ function closePreview(e, id) {
     <!-- CICLO -->
     <div class="preview-section" id="g3-ciclo">
       <div class="preview-analogy" style="background: #EEEDFE; border-color: #AFA9EC;">
-        <div class="preview-analogy-label" style="color: #3C3489;">Entrenamiento adaptado a tu ciclo ðŸŒ™</div>
-        <p>Este plan incluye una tabla de ajustes según tu fase hormonal. No todas las semanas son iguales â€” tu cuerpo tampoco debería serlo.</p>
+        <div class="preview-analogy-label" style="color: #3C3489;">Entrenamiento adaptado a tu ciclo 🌙</div>
+        <p>Este plan incluye una tabla de ajustes según tu fase hormonal. No todas las semanas son iguales — tu cuerpo tampoco debería serlo.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Fase Folicular (días 1-13) â€” Intensidad máxima</h4>
-        <p>Los estrógenos favorecen la fuerza y la recuperación. RIR 1-2, subí el peso en los ejercicios base. HIIT a tope â€” el cuerpo quema glucógeno de forma muy eficiente.</p>
+        <h4>Fase Folicular (días 1-13) — Intensidad máxima</h4>
+        <p>Los estrógenos favorecen la fuerza y la recuperación. RIR 1-2, subí el peso en los ejercicios base. HIIT a tope — el cuerpo quema glucógeno de forma muy eficiente.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Ovulación (días 14-15) â€” Pico de fuerza</h4>
-        <p>El mejor momento para intentar récords personales. Cuidado con los tendones â€” están más laxos por el pico hormonal.</p>
+        <h4>Ovulación (días 14-15) — Pico de fuerza</h4>
+        <p>El mejor momento para intentar récords personales. Cuidado con los tendones — están más laxos por el pico hormonal.</p>
       </div>
       <div class="preview-locked">
         <div class="preview-locked-inner">
@@ -2076,7 +2072,7 @@ function closePreview(e, id) {
           <div class="preview-step-show"><h4>Glosario completo</h4><p>RIR, HIIT, LISS explicados en simple para que entrenes como pro.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Tabla completa de ajustes por fase<br>disponible al comprar</div>
         </div>
       </div>
@@ -2094,7 +2090,7 @@ function closePreview(e, id) {
 <div class="preview-overlay" id="previewPlan4" onclick="closePreview(event, 'previewPlan4')">
   <div class="preview-modal">
     <div class="preview-header">
-      <button class="preview-close" onclick="document.getElementById('previewPlan4').classList.remove('active')">âœ•</button>
+      <button class="preview-close" onclick="document.getElementById('previewPlan4').classList.remove('active')">✕</button>
       <div class="preview-eyebrow">Vista previa · Plan 4</div>
       <div class="preview-title">Adiós Hinchazón + Recetas</div>
       <p style="font-size:0.8rem; color:var(--text-light); margin-top:8px;">Bajá kilos, deshinchate y volvé a verte bien en el espejo</p>
@@ -2114,7 +2110,7 @@ function closePreview(e, id) {
       </div>
       <div class="preview-step-show">
         <h4>¿Por qué no bajás de peso aunque comés poco?</h4>
-        <p>El SIBO y la permeabilidad intestinal pueden bloquearte la pérdida de grasa completamente â€” incluso en déficit calórico. Este plan incluye la guía SIBO para entenderlo y resolverlo.</p>
+        <p>El SIBO y la permeabilidad intestinal pueden bloquearte la pérdida de grasa completamente — incluso en déficit calórico. Este plan incluye la guía SIBO para entenderlo y resolverlo.</p>
       </div>
       <div class="preview-step-show">
         <h4>Cómo activar la quema de grasa sin dietas extremas</h4>
@@ -2127,7 +2123,7 @@ function closePreview(e, id) {
           <div class="preview-step-show"><h4>Camino 30 días Adiós Hinchazón</h4><p>Día a día, paso a paso.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Causas completas + plan de 30 días<br>disponible al comprar</div>
         </div>
       </div>
@@ -2150,7 +2146,7 @@ function closePreview(e, id) {
           <div class="preview-step-show"><h4>Tips de combinaciones de alimentos</h4><p>Qué combinar y qué evitar para desinflamar más rápido.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Recetario completo + lista de compras<br>disponible al comprar</div>
         </div>
       </div>
@@ -2163,17 +2159,17 @@ function closePreview(e, id) {
         <p>Además del plan principal, este programa incluye 4 recursos extra que complementan y aceleran tus resultados.</p>
       </div>
       <div class="preview-step-show">
-        <h4>ðŸŽ Guía para Perder Peso</h4>
+        <h4>🎁 Guía para Perder Peso</h4>
         <p>Estrategia nutricional clara, sin extremos ni restricciones absurdas. Para bajar grasa de verdad.</p>
       </div>
       <div class="preview-locked">
         <div class="preview-locked-inner">
-          <div class="preview-step-show"><h4>ðŸŽ Despedite de la Ansiedad con la Comida</h4><p>Herramientas para romper el ciclo hambre-culpa.</p></div>
-          <div class="preview-step-show"><h4>ðŸŽ Descubrí qué provoca tu Hinchazón</h4><p>Test y guía de identificación personalizada.</p></div>
-          <div class="preview-step-show"><h4>ðŸŽ Camino 30 Días Adiós Hinchazón</h4><p>Plan día a día para transformar tu abdomen en un mes.</p></div>
+          <div class="preview-step-show"><h4>🎁 Despedite de la Ansiedad con la Comida</h4><p>Herramientas para romper el ciclo hambre-culpa.</p></div>
+          <div class="preview-step-show"><h4>🎁 Descubrí qué provoca tu Hinchazón</h4><p>Test y guía de identificación personalizada.</p></div>
+          <div class="preview-step-show"><h4>🎁 Camino 30 Días Adiós Hinchazón</h4><p>Plan día a día para transformar tu abdomen en un mes.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Los 4 bonos completos<br>disponibles al comprar</div>
         </div>
       </div>
@@ -2191,7 +2187,7 @@ function closePreview(e, id) {
 <div class="preview-overlay" id="previewPlan6" onclick="closePreview(event, 'previewPlan6')">
   <div class="preview-modal">
     <div class="preview-header">
-      <button class="preview-close" onclick="document.getElementById('previewPlan6').classList.remove('active')">âœ•</button>
+      <button class="preview-close" onclick="document.getElementById('previewPlan6').classList.remove('active')">✕</button>
       <div class="preview-eyebrow">Vista previa · Plan 6</div>
       <div class="preview-title">Adiós Ansiedad a Comer</div>
       <p style="font-size:0.8rem; color:var(--text-light); margin-top:8px;">Estrategias simples para dejar de comer por ansiedad</p>
@@ -2210,8 +2206,8 @@ function closePreview(e, id) {
         <p>No tenés tanta hambre física, pero no podés dejar de pensar en comida. Comés "bien" todo el día y a la tarde/noche se te va todo al carajo. Decís "solo un pedacito" y terminás atacando el paquete.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Eso es ansiedad con la comida â€” no es falta de fuerza de voluntad</h4>
-        <p>No sos floja, no estás rota. Tu cerebro está usando la comida como un calmante rápido. Comer para calmar algo que no es hambre del cuerpo â€” es hambre de cabeza, emociones o cansancio.</p>
+        <h4>Eso es ansiedad con la comida — no es falta de fuerza de voluntad</h4>
+        <p>No sos floja, no estás rota. Tu cerebro está usando la comida como un calmante rápido. Comer para calmar algo que no es hambre del cuerpo — es hambre de cabeza, emociones o cansancio.</p>
       </div>
       <div class="preview-step-show">
         <h4>El círculo que este plan rompe</h4>
@@ -2223,7 +2219,7 @@ function closePreview(e, id) {
           <div class="preview-step-show"><h4>Comer poco = más ataques después</h4><p>Por qué restringirte es la peor estrategia y qué hacer en cambio.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Guía completa de identificación<br>disponible al comprar</div>
         </div>
       </div>
@@ -2237,16 +2233,16 @@ function closePreview(e, id) {
       </div>
       <div class="preview-step-show">
         <h4>Paso 1 · Pausa mínima de 2 minutos</h4>
-        <p>Antes de ir a la cocina: 10 respiraciones profundas, inhalás 4 segundos, exhalás 6-8. Luego la pregunta clave: "¿Tengo hambre física o esto es ansiedad?" â€” el plan te enseña a distinguirlas.</p>
+        <p>Antes de ir a la cocina: 10 respiraciones profundas, inhalás 4 segundos, exhalás 6-8. Luego la pregunta clave: "¿Tengo hambre física o esto es ansiedad?" — el plan te enseña a distinguirlas.</p>
       </div>
       <div class="preview-locked">
         <div class="preview-locked-inner">
-          <div class="preview-step-show"><h4>Paso 2 · Mové el cuerpo 5 minutos</h4><p>No es entrenamiento â€” es cortar el circuito. Opciones simples para hacer en casa.</p></div>
+          <div class="preview-step-show"><h4>Paso 2 · Mové el cuerpo 5 minutos</h4><p>No es entrenamiento — es cortar el circuito. Opciones simples para hacer en casa.</p></div>
           <div class="preview-step-show"><h4>Paso 3 · Plan B de comida</h4><p>Lista de opciones que calman sin destruirte. Siempre a mano.</p></div>
           <div class="preview-step-show"><h4>Paso 4 · Cerrar el episodio SIN castigo</h4><p>Lo más importante: cómo te tratás después. Sin culpa, sin "mañana empiezo de cero".</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Kit completo de 4 pasos<br>disponible al comprar</div>
         </div>
       </div>
@@ -2255,11 +2251,11 @@ function closePreview(e, id) {
     <!-- PLAN 7 DÍAS -->
     <div class="preview-section" id="a6-plan">
       <div class="preview-analogy" style="background: #EEEDFE; border-color: #AFA9EC;">
-        <div class="preview-analogy-label" style="color: #3C3489;">Mini plan 7 días â€” ansiedad en descenso</div>
+        <div class="preview-analogy-label" style="color: #3C3489;">Mini plan 7 días — ansiedad en descenso</div>
         <p>No es una cárcel, es un experimento. Durante 7 días probás ajustes concretos para bajar la intensidad de los ataques antes de que lleguen.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Desayuno de verdad â€” proteína + carbos + grasa buena</h4>
+        <h4>Desayuno de verdad — proteína + carbos + grasa buena</h4>
         <p>Huevo revuelto + tostadas suaves + aceite de oliva, o yogur + banana + arroz inflado. Si tu cuerpo no tiene lo que necesita, la ansiedad de la tarde no es solo emocional: es biológica.</p>
       </div>
       <div class="preview-locked">
@@ -2269,7 +2265,7 @@ function closePreview(e, id) {
           <div class="preview-step-show"><h4>Cómo cerrar la guerra con la comida</h4><p>Aunque siga habiendo batallas. Con más ternura y menos culpa.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Plan completo de 7 días + checklist<br>disponible al comprar</div>
         </div>
       </div>
@@ -2287,7 +2283,7 @@ function closePreview(e, id) {
 <div class="preview-overlay" id="previewPlan5" onclick="closePreview(event, 'previewPlan5')">
   <div class="preview-modal">
     <div class="preview-header">
-      <button class="preview-close" onclick="document.getElementById('previewPlan5').classList.remove('active')">âœ•</button>
+      <button class="preview-close" onclick="document.getElementById('previewPlan5').classList.remove('active')">✕</button>
       <div class="preview-eyebrow">Vista previa · Plan 5</div>
       <div class="preview-title">Guía Completa sobre SIBO</div>
       <p style="font-size:0.8rem; color:var(--text-light); margin-top:8px;">116 páginas · Claridad real para entender qué le pasa a tu panza</p>
@@ -2303,24 +2299,24 @@ function closePreview(e, id) {
     <div class="preview-section active" id="s5-que">
       <div class="preview-analogy" style="background: var(--cream); border-color: var(--taupe);">
         <div class="preview-analogy-label" style="color: var(--brown);">Lo que nadie te explica con claridad</div>
-        <p>La hinchazón que cambia mucho a lo largo del día, la panza que a la mañana está casi normal y a la tarde parece que estás embarazada. No estás loca ni exagerando â€” tiene una explicación.</p>
+        <p>La hinchazón que cambia mucho a lo largo del día, la panza que a la mañana está casi normal y a la tarde parece que estás embarazada. No estás loca ni exagerando — tiene una explicación.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Estar llena vs estar inflamada â€” no es lo mismo</h4>
+        <h4>Estar llena vs estar inflamada — no es lo mismo</h4>
         <p>Cuando estás llena, lo sentís en el estómago: pesadez. Cuando estás inflamada, lo sentís en la panza: se infla como un globo, se pone dura, puede doler. Y lo más llamativo: cambia mucho a lo largo del día.</p>
       </div>
       <div class="preview-step-show">
         <h4>Qué es el SIBO explicado para gente real</h4>
-        <p>SIBO es sobrecrecimiento bacteriano en el intestino delgado. Imaginá que la fiesta bacteriana se adelantó a una parte del intestino donde todavía no tocaba â€” se produce gas antes de tiempo y tu panza lo acusa.</p>
+        <p>SIBO es sobrecrecimiento bacteriano en el intestino delgado. Imaginá que la fiesta bacteriana se adelantó a una parte del intestino donde todavía no tocaba — se produce gas antes de tiempo y tu panza lo acusa.</p>
       </div>
       <div class="preview-locked">
         <div class="preview-locked-inner">
           <div class="preview-step-show"><h4>Tu microbiota: las bacterias que viven en vos</h4><p>Qué hace la microbiota, qué es la disbiosis y cómo tu forma de vivir la afecta todos los días.</p></div>
-          <div class="preview-step-show"><h4>SIBO, colon irritable, intestino sensible â€” ¿es todo lo mismo?</h4><p>Las diferencias, los puntos en común y qué lugar ocupa este libro según dónde estés parada.</p></div>
+          <div class="preview-step-show"><h4>SIBO, colon irritable, intestino sensible — ¿es todo lo mismo?</h4><p>Las diferencias, los puntos en común y qué lugar ocupa este libro según dónde estés parada.</p></div>
           <div class="preview-step-show"><h4>Cómo se diagnostica y qué no hace este libro</h4><p>Qué pedirle al médico, cómo preparar la consulta, qué esperar del proceso.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">6 capítulos completos de base teórica<br>disponibles al comprar</div>
         </div>
       </div>
@@ -2330,20 +2326,20 @@ function closePreview(e, id) {
     <div class="preview-section" id="s5-fodmap">
       <div class="preview-analogy" style="background: #E6F1FB; border-color: #85B7EB;">
         <div class="preview-analogy-label" style="color: #185FA5;">¿Tengo que dejar todo?</div>
-        <p>FODMAP, gluten, lácteos, azúcar, harinasâ€¦ cada reel suma algo más a una lista que se va sintiendo cada vez más pesada. La respuesta corta: no. La respuesta larga está en esta guía.</p>
+        <p>FODMAP, gluten, lácteos, azúcar, harinas… cada reel suma algo más a una lista que se va sintiendo cada vez más pesada. La respuesta corta: no. La respuesta larga está en esta guía.</p>
       </div>
       <div class="preview-step-show">
-        <h4>FODMAP â€” la palabra rara que no debería asustarte</h4>
+        <h4>FODMAP — la palabra rara que no debería asustarte</h4>
         <p>Los FODMAP no son malos en sí. Son ciertos carbohidratos que en un intestino hipersensible fermentan más y generan gases. La dieta baja en FODMAP es una herramienta temporal, no una condena perpetua.</p>
       </div>
       <div class="preview-locked">
         <div class="preview-locked-inner">
-          <div class="preview-step-show"><h4>Gluten, lácteos y azúcar â€” entre la demonización y el sentido común</h4><p>Qué hay detrás de cada etiqueta y qué lugar queremos que ocupen en tu vida real.</p></div>
-          <div class="preview-step-show"><h4>Alimentación antiinflamatoria â€” tu piso de salud</h4><p>Qué se ve en la práctica en un día real (no un día de Instagram).</p></div>
+          <div class="preview-step-show"><h4>Gluten, lácteos y azúcar — entre la demonización y el sentido común</h4><p>Qué hay detrás de cada etiqueta y qué lugar queremos que ocupen en tu vida real.</p></div>
+          <div class="preview-step-show"><h4>Alimentación antiinflamatoria — tu piso de salud</h4><p>Qué se ve en la práctica en un día real (no un día de Instagram).</p></div>
           <div class="preview-step-show"><h4>Tu despensa antiinflamatoria</h4><p>Qué tener a mano, proteínas fáciles, verduras con estrategia, grasas buenas.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Guía completa de FODMAP y alimentación<br>disponible al comprar</div>
         </div>
       </div>
@@ -2353,27 +2349,27 @@ function closePreview(e, id) {
     <div class="preview-section" id="s5-cocina">
       <div class="preview-analogy" style="background: #EAF3DE; border-color: #97C459;">
         <div class="preview-analogy-label" style="color: #3B6D11;">El recetario por niveles de tolerancia</div>
-        <p>No todas las recetas son para todos los momentos. Hay días en que tu panza agradece cosas muy simples â€” y otros en que aguantás más variedad. El recetario respeta eso.</p>
+        <p>No todas las recetas son para todos los momentos. Hay días en que tu panza agradece cosas muy simples — y otros en que aguantás más variedad. El recetario respeta eso.</p>
       </div>
       <div class="preview-step-show">
-        <h4>Sistema de 3 niveles â€” como un semáforo que orienta, no prohíbe</h4>
+        <h4>Sistema de 3 niveles — como un semáforo que orienta, no prohíbe</h4>
         <p>Nivel 1 (panza muy sensible) → recetas suaves, pocas combinaciones. Nivel 2 (fase intermedia) → más variedad. Nivel 3 (mantenimiento) → alimentación antiinflamatoria amplia con flexibilidad.</p>
       </div>
       <div class="preview-locked">
         <div class="preview-locked-inner">
-          <div class="preview-step-show"><h4>Cocinar con intestino sensible â€” trucos y ajustes</h4><p>Cocciones, texturas, remojos y pequeños trucos que hacen los platos más digeribles.</p></div>
+          <div class="preview-step-show"><h4>Cocinar con intestino sensible — trucos y ajustes</h4><p>Cocciones, texturas, remojos y pequeños trucos que hacen los platos más digeribles.</p></div>
           <div class="preview-step-show"><h4>Planificación semanal y batch cooking sencillo</h4><p>Sin volverte una obsesiva. Las 4 bases que más conviene tener listas.</p></div>
-          <div class="preview-step-show"><h4>Tu relación con la comida y con tu cuerpo</h4><p>El capítulo final que ninguna guía de intestino tiene â€” y que es el más importante.</p></div>
+          <div class="preview-step-show"><h4>Tu relación con la comida y con tu cuerpo</h4><p>El capítulo final que ninguna guía de intestino tiene — y que es el más importante.</p></div>
         </div>
         <div class="preview-locked-overlay">
-          <div class="lock-icon">ðŸ”’</div>
+          <div class="lock-icon">🔒</div>
           <div class="lock-text">Recetario completo + planificación + capítulo emocional<br>disponible al comprar</div>
         </div>
       </div>
     </div>
 
     <div class="preview-footer">
-      <p>"No necesitás hacerlo perfecto. No necesitás tener todas las respuestas hoy. Necesitás algo más amable." â€” 116 páginas para acompañarte.</p>
+      <p>"No necesitás hacerlo perfecto. No necesitás tener todas las respuestas hoy. Necesitás algo más amable." — 116 páginas para acompañarte.</p>
       <a href="https://wa.me/543584012123?text=Hola%20Micaela!%20Quiero%20la%20Gu%C3%ADa%20completa%20sobre%20SIBO" target="_blank" class="preview-buy-btn">Obtener la guía completa →</a>
     </div>
   </div>
@@ -2381,5 +2377,3 @@ function closePreview(e, id) {
 
 </body>
 </html>
-
-
