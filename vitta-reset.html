@@ -865,23 +865,5 @@ function toggleFaq(el) {
 }
 </script>
 
-<script>
-(function() {
-  try {
-    var fbp = (document.cookie.match(/_fbp=([^;]+)/) || [])[1] || '';
-    var fbc = (document.cookie.match(/_fbc=([^;]+)/) || [])[1] || '';
-    fetch('https://vitta-wellness.netlify.app/.netlify/functions/capi', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        eventName: 'PageView',
-        url: window.location.href,
-        fbp: fbp,
-        fbc: fbc
-      })
-    }).catch(function(){});
-  } catch(e) {}
-})();
-</script>
 </body>
 </html>
