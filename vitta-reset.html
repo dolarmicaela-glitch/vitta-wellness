@@ -878,7 +878,12 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
         </ul>
       </div>
 
-      <div class="plan30-card">
+      <div class="plan30-card plan30-card--locked">
+        <div class="plan30-lock-overlay">
+          <div class="plan30-lock-icon">🔒</div>
+          <div class="plan30-lock-text">Semana 2 desbloqueada<br>con tu compra</div>
+          <a href="https://go.hotmart.com/K106096446H" target="_blank" class="plan30-lock-btn">Quiero el plan completo →</a>
+        </div>
         <div class="plan30-week-badge" style="background:var(--gold);">Semana 2</div>
         <div class="plan30-week-title">Activá el sistema</div>
         <div class="plan30-pillars">
@@ -892,7 +897,12 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
         </ul>
       </div>
 
-      <div class="plan30-card">
+      <div class="plan30-card plan30-card--locked">
+        <div class="plan30-lock-overlay">
+          <div class="plan30-lock-icon">🔒</div>
+          <div class="plan30-lock-text">Semana 3 desbloqueada<br>con tu compra</div>
+          <a href="https://go.hotmart.com/K106096446H" target="_blank" class="plan30-lock-btn">Quiero el plan completo →</a>
+        </div>
         <div class="plan30-week-badge" style="background:#48C9B0; color:#0A2540;">Semana 3</div>
         <div class="plan30-week-title">Nutrición precisa</div>
         <div class="plan30-pillars">
@@ -907,7 +917,12 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
         </ul>
       </div>
 
-      <div class="plan30-card plan30-card--highlight">
+      <div class="plan30-card plan30-card--highlight plan30-card--locked">
+        <div class="plan30-lock-overlay">
+          <div class="plan30-lock-icon">🔒</div>
+          <div class="plan30-lock-text">Semana 4 desbloqueada<br>con tu compra</div>
+          <a href="https://go.hotmart.com/K106096446H" target="_blank" class="plan30-lock-btn">Quiero el plan completo →</a>
+        </div>
         <div class="plan30-week-badge" style="background:#C9A96E; color:#0A2540;">Semana 4</div>
         <div class="plan30-week-title">Todo integrado</div>
         <div class="plan30-pillars">
@@ -961,6 +976,55 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
   transform: translateY(-4px);
   border-color: rgba(184,147,106,0.3);
 }
+/* CANDADO */
+.plan30-card--locked {
+  position: relative;
+  overflow: hidden;
+}
+.plan30-card--locked > *:not(.plan30-lock-overlay) {
+  filter: blur(4px);
+  opacity: 0.35;
+  pointer-events: none;
+  user-select: none;
+}
+.plan30-lock-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(10,20,30,0.55);
+  backdrop-filter: blur(2px);
+  border-radius: 18px;
+  padding: 24px;
+  text-align: center;
+}
+.plan30-lock-icon { font-size: 2rem; }
+.plan30-lock-text {
+  font-size: 0.85rem;
+  color: rgba(245,239,230,0.9);
+  line-height: 1.5;
+  font-family: 'Jost', sans-serif;
+}
+.plan30-lock-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 20px;
+  margin-top: 4px;
+  transition: background 0.2s;
+  letter-spacing: 0.04em;
+}
+.plan30-lock-btn:hover { background: var(--gold2); }
+
 .plan30-card--highlight {
   border-color: rgba(201,169,110,0.35);
   background: rgba(201,169,110,0.06);
