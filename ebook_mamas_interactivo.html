@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criar Sano, Criar Feliz — VITTA</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=DM+Sans:wght@300;400;500;600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--O:#FF6B35;--G:#3DBE7A;--Y:#FFD600;--S:#29B6F6;--P:#9C27B0;--R:#FF4757;--D:#1E272E;--M:#546E7A;--L:#90A4AE;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;font-weight:300;background:#F8FFFE;color:var(--D);overflow-x:hidden;}
+img{display:block;width:100%;object-fit:cover;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(30,39,46,.97);backdrop-filter:blur(12px);padding:0 28px;height:62px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.2rem;color:#fff;}
+.nav-logo span{color:var(--Y);}
+.nav-links{display:flex;gap:6px;}
+.nav-link{padding:6px 14px;border-radius:20px;font-family:'Jost',sans-serif;font-size:.73rem;font-weight:500;color:rgba(255,255,255,.65);text-decoration:none;transition:all .2s;}
+.nav-link:hover{background:rgba(255,255,255,.1);color:#fff;}
+.nl-o{background:var(--O);color:#fff!important;}
+.nl-g{background:var(--G);color:#fff!important;}
+.nl-p{background:var(--P);color:#fff!important;}
+
+/* ── HERO ── */
+.hero{margin-top:62px;min-height:92vh;position:relative;display:flex;align-items:center;overflow:hidden;}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.hero .ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,39,46,.93) 0%,rgba(30,39,46,.65) 55%,rgba(255,107,53,.2) 100%);}
+.hero-ct{position:relative;z-index:2;max-width:680px;padding:60px 52px;}
+.hero-badge{display:inline-flex;background:var(--Y);color:var(--D);padding:5px 16px;border-radius:20px;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px;}
+.hero-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:4.2rem;color:#fff;line-height:.92;margin-bottom:20px;}
+.hero-title em{color:var(--Y);font-style:normal;}
+.hero-sub{font-size:1.08rem;font-weight:300;color:rgba(255,255,255,.7);line-height:1.75;max-width:520px;margin-bottom:28px;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;}
+.hero-pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:6px 14px;border-radius:20px;font-family:'Jost',sans-serif;font-size:.73rem;color:rgba(255,255,255,.7);}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:30px;font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;text-decoration:none;transition:transform .2s,box-shadow .2s;cursor:pointer;}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.btn-o{background:var(--O);color:#fff;}
+.btn-g{background:var(--G);color:#fff;}
+.btn-outline{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.3);color:#fff;}
+
+/* ── SECTION WRAPPERS ── */
+section{padding:80px 28px;}
+.container{max-width:1100px;margin:0 auto;}
+.sec-label{font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;display:block;margin-bottom:10px;}
+.sec-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:2.6rem;line-height:1.05;margin-bottom:16px;}
+.sec-sub{font-size:1rem;font-weight:300;color:var(--M);line-height:1.8;max-width:640px;margin-bottom:40px;}
+
+/* ── SECTION HEADER BANNER ── */
+.sec-banner{position:relative;height:340px;overflow:hidden;display:flex;align-items:flex-end;}
+.sec-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.sec-banner .ov{position:absolute;inset:0;}
+.sec-banner .ct{position:relative;z-index:2;padding:36px 52px;max-width:700px;}
+.sec-num{font-family:'Nunito',sans-serif;font-weight:900;font-size:8rem;position:absolute;right:0;top:-20px;opacity:.07;color:#fff;line-height:1;}
+.sec-lbl{font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px;}
+.sec-ttl{font-family:'Nunito',sans-serif;font-weight:900;font-size:2.8rem;color:#fff;line-height:.97;margin-bottom:10px;}
+.sec-dsc{font-size:.97rem;font-weight:300;color:rgba(255,255,255,.72);line-height:1.7;}
+
+/* ── INFO BOXES ── */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:36px;}
+.info-box{border-radius:16px;padding:24px;border-left:5px solid;}
+.info-box h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;}
+.step-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
+.step-n{width:26px;height:26px;border-radius:50%;flex-shrink:0;font-family:'Nunito',sans-serif;font-weight:900;font-size:.78rem;color:#fff;display:flex;align-items:center;justify-content:center;}
+.step-t{font-size:.9rem;font-weight:300;color:var(--M);line-height:1.65;}
+.step-t b{font-weight:600;color:var(--D);}
+
+/* ── FREEZE TABLE ── */
+.freeze-wrap{border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.1);margin-bottom:48px;}
+.freeze-table{width:100%;border-collapse:collapse;}
+.freeze-table thead tr{background:var(--D);}
+.freeze-table th{font-family:'Jost',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);padding:16px 18px;text-align:left;}
+.freeze-table tbody tr:nth-child(even){background:#F7FAFB;}
+.freeze-table tbody tr:nth-child(odd){background:#fff;}
+.freeze-table td{padding:14px 18px;font-size:.9rem;font-weight:300;color:var(--M);line-height:1.55;border-bottom:.5px solid #EDF2F7;vertical-align:top;}
+.freeze-table td:first-child{font-weight:600;color:var(--D);}
+.t-pill{display:inline-flex;padding:3px 10px;border-radius:20px;font-family:'Jost',sans-serif;font-size:.68rem;font-weight:700;}
+
+/* ── RECIPE GRID ── */
+.recipe-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-bottom:48px;}
+.rec-card{border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1);background:#fff;display:flex;flex-direction:column;}
+.rec-card img{height:200px;object-fit:cover;width:100%;}
+.rec-card-bd{padding:20px;flex:1;display:flex;flex-direction:column;}
+.rec-bar{height:4px;border-radius:3px;margin-bottom:14px;}
+.rec-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:8px;}
+.rec-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.r-tag{padding:3px 10px;border-radius:20px;font-family:'Jost',sans-serif;font-size:.65rem;font-weight:700;}
+.rec-ing{font-size:.87rem;font-weight:300;color:var(--M);line-height:1.7;margin-bottom:12px;flex:1;}
+.rec-ing b{font-weight:600;color:var(--D);}
+.rec-steps-list{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
+.rec-step{display:flex;gap:8px;font-size:.85rem;color:var(--M);line-height:1.6;}
+.rec-sn{width:22px;height:22px;border-radius:50%;flex-shrink:0;font-family:'Nunito',sans-serif;font-weight:800;font-size:.7rem;color:#fff;display:flex;align-items:center;justify-content:center;}
+.rec-pills{display:flex;gap:8px;flex-wrap:wrap;}
+.rp-f{background:#E3F2FD;color:#1565C0;padding:3px 10px;border-radius:20px;font-family:'Jost',sans-serif;font-size:.68rem;font-weight:600;}
+.rp-d{background:#FFF3E0;color:#E65100;padding:3px 10px;border-radius:20px;font-family:'Jost',sans-serif;font-size:.68rem;font-weight:600;}
+
+/* ── VIDEO CTA ── */
+.video-cta{background:var(--D);border-radius:20px;padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:28px;margin-bottom:0;flex-wrap:wrap;}
+.video-cta-txt h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.35rem;color:#fff;margin-bottom:8px;}
+.video-cta-txt p{font-size:.9rem;color:rgba(255,255,255,.6);font-weight:300;}
+.video-cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--R);color:#fff;padding:14px 28px;border-radius:30px;font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;text-decoration:none;white-space:nowrap;transition:transform .2s;}
+.video-cta-btn:hover{transform:translateY(-2px);}
+.play-icon{width:36px;height:36px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;}
+
+/* ── VIANDAS ── */
+.formula-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px;}
+@media(max-width:700px){.formula-grid{grid-template-columns:1fr;}}
+.f-box{border-radius:14px;padding:20px 22px;}
+.f-box h3{font-family:'Jost',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+.f-box p{font-size:.9rem;font-weight:300;color:var(--M);line-height:1.75;}
+.f-box p b{font-weight:600;color:var(--D);}
+
+.trucos-box{background:var(--D);border-radius:16px;padding:28px 32px;margin-bottom:40px;display:flex;gap:28px;flex-wrap:wrap;align-items:center;}
+.trucos-box h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.1rem;color:var(--Y);margin-bottom:16px;}
+.trucos-list{flex:1;min-width:220px;}
+
+.vianda-week{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:48px;}
+.v-card{border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1);display:flex;flex-direction:column;}
+.v-head{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;}
+.v-day{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:#fff;}
+.v-theme{font-family:'DM Sans',sans-serif;font-size:.78rem;color:rgba(255,255,255,.75);font-style:italic;}
+.v-img{height:160px;object-fit:cover;width:100%;}
+.v-items{padding:14px 16px;background:#fff;display:flex;flex-direction:column;gap:7px;}
+.v-row{display:flex;gap:8px;padding:6px 10px;border-radius:8px;align-items:center;}
+.v-cat{font-family:'Jost',sans-serif;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;width:58px;flex-shrink:0;}
+.v-ct{font-size:.85rem;font-weight:400;color:var(--D);line-height:1.35;}
+.v-tip{padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:.78rem;font-style:italic;color:var(--M);background:#F8FAFB;border-top:1px solid #EDF2F7;}
+.v-tip b{font-weight:600;color:var(--D);font-style:normal;}
+
+/* ── HÁBITOS ── */
+.hab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:48px;}
+.h-card{border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1);background:#fff;display:flex;flex-direction:column;}
+.h-card img{height:220px;object-fit:cover;width:100%;}
+.h-card-bd{padding:20px;flex:1;}
+.h-num{font-family:'Nunito',sans-serif;font-weight:900;font-size:2rem;opacity:.08;color:var(--D);line-height:1;margin-bottom:-6px;}
+.h-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:6px;}
+.h-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+.h-tag{padding:3px 10px;border-radius:20px;font-family:'Jost',sans-serif;font-size:.65rem;font-weight:700;}
+.h-steps{display:flex;flex-direction:column;gap:7px;margin-bottom:12px;}
+.h-tip{border-radius:10px;padding:10px 14px;font-size:.84rem;font-weight:300;color:var(--M);line-height:1.6;}
+.h-tip b{font-weight:600;color:var(--D);}
+
+/* ── CHECKLIST ── */
+.checklist-sec{background:var(--D);padding:80px 28px;}
+.cl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px;}
+.cl-col{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;}
+.cl-head{font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:16px;}
+.cl-row{display:flex;gap:12px;padding:8px 0;border-bottom:.4px solid rgba(255,255,255,.05);}
+.cl-row:last-child{border:none;}
+.cl-box{width:20px;height:20px;border-radius:4px;border:2px solid;flex-shrink:0;margin-top:2px;}
+.cl-txt{font-size:.9rem;font-weight:300;color:rgba(255,255,255,.65);line-height:1.55;}
+
+/* ── FOOTER ── */
+footer{background:var(--D);border-top:1px solid rgba(255,255,255,.05);padding:28px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.f-brand{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:var(--Y);}
+.f-txt{font-size:.82rem;color:rgba(255,255,255,.3);}
+
+/* ── UTILITY ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:36px;}
+@media(max-width:680px){.g2{grid-template-columns:1fr;}}
+.img-rnd{border-radius:14px;object-fit:cover;width:100%;}
+.sec-bg-o{background:linear-gradient(135deg,#FFF3EE 0%,#FFF8F5 100%);}
+.sec-bg-g{background:linear-gradient(135deg,#F0FFF8 0%,#F7FFFB 100%);}
+.sec-bg-s{background:linear-gradient(135deg,#F0FAFE 0%,#F5FDFF 100%);}
+.sec-bg-p{background:linear-gradient(135deg,#FAF0FF 0%,#FDF5FF 100%);}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-logo">VITTA <span>·</span> Criar Sano</div>
+  <div class="nav-links">
+    <a href="#freezer" class="nav-link nl-o">El Freezer</a>
+    <a href="#viandas" class="nav-link nl-g">Viandas</a>
+    <a href="#habitos" class="nav-link nl-p">Hábitos</a>
+    <a href="#checklist" class="nav-link" style="background:rgba(255,255,255,.1);">Checklist</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <img class="bg" src="img_mamas/kid1.jpg" alt="">
+  <div class="ov"></div>
+  <div class="hero-ct">
+    <div class="hero-badge">Guía Completa VITTA · 2024</div>
+    <h1 class="hero-title">Criar <em>Sano,</em><br>Criar Feliz</h1>
+    <p class="hero-sub">El método VITTA para que tus hijos coman bien, incorporen hábitos saludables y disfruten cada comida — sin batallas ni estrés.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">9 Recetas del freezer</span>
+      <span class="hero-pill">Tiempos de congelado</span>
+      <span class="hero-pill">5 Viandas semanales</span>
+      <span class="hero-pill">4 Juegos para hábitos</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#freezer" class="btn btn-o">Empezar ahora</a>
+      <a href="#checklist" class="btn btn-outline">Ver checklist</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ PARTE 1: FREEZER ══════════════════ -->
+<div id="freezer">
+  <!-- Banner -->
+  <div class="sec-banner">
+    <img src="img_mamas/mealprep2.jpg" alt="">
+    <div class="ov" style="background:linear-gradient(to top,rgba(255,107,53,.96) 0%,rgba(200,60,0,.55) 45%,rgba(0,0,0,.1) 100%);"></div>
+    <div class="sec-num">1</div>
+    <div class="ct">
+      <div class="sec-lbl">Parte uno</div>
+      <div class="sec-ttl">El Freezer Inteligente</div>
+      <p class="sec-dsc">1 vez al mes · 3 horas de prep · 4 semanas de opciones sanas listas en 5 minutos</p>
+    </div>
+  </div>
+
+  <section class="sec-bg-o">
+    <div class="container">
+      <span class="sec-label" style="color:var(--O);">El sistema que te salva la semana</span>
+      <h2 class="sec-title">¿Por qué el freezer <span style="color:var(--O);">inteligente funciona?</span></h2>
+      <p class="sec-sub">La trampa no es falta de amor — es que a las 6 de la tarde, agotada, no hay nada listo. El freezer resuelve ese momento exacto para siempre.</p>
+
+      <div class="g2">
+        <div>
+          <div class="info-grid" style="margin-bottom:0;grid-template-columns:1fr;">
+            <div class="info-box" style="background:#FFE5D9;border-color:var(--O);">
+              <h3 style="color:var(--O);">Tu freezer siempre tiene que tener</h3>
+              <div class="step-row"><div class="step-n" style="background:var(--O);">1</div><div class="step-t"><b>Proteína lista:</b> hamburguesas, albóndigas, croquetas o muffins de huevo</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--O);">2</div><div class="step-t"><b>Carbohidrato sano:</b> panquecas, waffles o tostadas integrales</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--O);">3</div><div class="step-t"><b>Verdura oculta:</b> cubitos de espinaca, brócoli o zanahoria</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--O);">4</div><div class="step-t"><b>Snack nutritivo:</b> galletitas de avena o minifrittatas</div></div>
+            </div>
+            <div class="info-box" style="background:#E8F5E9;border-color:var(--G);margin-top:16px;">
+              <h3 style="color:var(--G);">Las 5 reglas de oro</h3>
+              <div class="step-row"><div class="step-n" style="background:var(--G);">1</div><div class="step-t"><b>Nunca congelar caliente</b> — esperar que enfríe por completo</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--G);">2</div><div class="step-t"><b>Etiquetar nombre + fecha</b> — marcador sobre cinta de papel</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--G);">3</div><div class="step-t"><b>Bolsas zip o hermético</b> — sacar todo el aire antes de cerrar</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--G);">4</div><div class="step-t"><b>Porcionar antes</b> — así sacás solo lo que necesitás</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--G);">5</div><div class="step-t"><b>Nunca recongelar</b> — lo descongelado se consume ese día</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <img src="img_mamas/mama_cocina.jpg" alt="Mamá preparando comida" class="img-rnd" style="flex:1;height:220px;">
+          <img src="img_mamas/ziplock1.jpg" alt="Bolsa ziplock con alimentos" class="img-rnd" style="height:160px;">
+        </div>
+      </div>
+
+      <!-- Tabla congelado -->
+      <span class="sec-label" style="color:var(--G);">La guía definitiva</span>
+      <h2 class="sec-title" style="font-size:2rem;">Cuánto tiempo dura cada receta <span style="color:var(--G);">en el freezer</span></h2>
+      <div class="freeze-wrap">
+        <table class="freeze-table">
+          <thead>
+            <tr>
+              <th>Receta</th>
+              <th>Cómo congelar correctamente</th>
+              <th>Máximo</th>
+              <th>Cómo descongelar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Hamburguesas</td><td>Separar con papel manteca. Bolsa zip sin aire. Etiquetar con fecha.</td><td><span class="t-pill" style="background:#FFE5D9;color:var(--O);">3 meses</span></td><td>2 min microondas o 3 min sartén a fuego bajo.</td></tr>
+            <tr><td>Panquecas</td><td>Apilar de a 3 con papel manteca. Bolsa zip. Completamente frías antes.</td><td><span class="t-pill" style="background:#FFFDE7;color:#F57F17;">1 mes</span></td><td>Sartén sin aceite 1 min por lado o tostadora.</td></tr>
+            <tr><td>Albóndigas</td><td>Congelar en bandeja separadas 1 hora. Luego bolsa zip. No se pegan.</td><td><span class="t-pill" style="background:#FFE5D9;color:var(--O);">3 meses</span></td><td>Directo a salsa de tomate caliente 5–7 min.</td></tr>
+            <tr><td>Muffins salados</td><td>Envolver individualmente en film. Bolsa o recipiente hermético.</td><td><span class="t-pill" style="background:#F3E5F5;color:var(--P);">2 meses</span></td><td>45–60 seg microondas. También sirven fríos.</td></tr>
+            <tr><td>Croquetas de pescado</td><td>Congelar en bandeja, luego bolsa. Separar con papel manteca.</td><td><span class="t-pill" style="background:#E3F2FD;color:#1565C0;">2 meses</span></td><td>Horno 200° 12–15 min directo del freezer.</td></tr>
+            <tr><td>Galletitas</td><td>Recipiente hermético o bolsa zip. Sin papel entre c/u.</td><td><span class="t-pill" style="background:#F9FBE7;color:#827717;">2 meses</span></td><td>5–10 min a temperatura ambiente solas.</td></tr>
+            <tr><td>Waffles</td><td>Papel manteca entre c/u. Bolsa zip plana. Congelar pronto.</td><td><span class="t-pill" style="background:#E8F5E9;color:#2E7D32;">2 meses</span></td><td>Tostadora 2 min directo del freezer. Crujientes.</td></tr>
+            <tr><td>Cubitos de verdura</td><td>Llenar cubetera. 24h freezer. Pasar cubos a bolsa zip.</td><td><span class="t-pill" style="background:#E3F2FD;color:#1565C0;">6 meses</span></td><td>Directo a sopas, purés y salsas calientes.</td></tr>
+            <tr><td>Mini tortillas</td><td>Envolver en film individual. Separar con papel manteca. Bolsa zip.</td><td><span class="t-pill" style="background:#FFEBEE;color:#C62828;">1 mes</span></td><td>45 seg microondas o temperatura ambiente.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Recetas -->
+      <span class="sec-label" style="color:var(--O);">Las 9 recetas del mes</span>
+      <h2 class="sec-title" style="font-size:2rem;">Preparación batch: <span style="color:var(--O);">1 vez al mes</span></h2>
+      <div class="recipe-grid">
+
+        <div class="rec-card">
+          <img src="img_mamas/rec1_burgers.jpg" alt="Hamburguesas">
+          <div class="rec-card-bd">
+            <div class="rec-bar" style="background:var(--O);"></div>
+            <div class="rec-name">Hamburguesas Multinutrientes</div>
+            <div class="rec-tags"><span class="r-tag" style="background:#FFE5D9;color:var(--O);">Proteína</span><span class="r-tag" style="background:#FFE5D9;color:var(--O);">Hierro</span></div>
+            <div class="rec-ing"><b>Ingredientes:</b> 500g carne picada · zanahoria rallada · espinaca cocida · 1 huevo · avena · sal.</div>
+            <div class="rec-steps-list">
+              <div class="rec-step"><div class="rec-sn" style="background:var(--O);">1</div>Mezclar todos los ingredientes. Formar medallones.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:var(--O);">2</div>Dorar 3 min por lado. Enfriar en rejilla.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:var(--O);">3</div>Separar con papel manteca. Bolsa zip etiquetada.</div>
+            </div>
+            <div class="rec-pills"><span class="rp-f">❄ 3 meses</span><span class="rp-d">☀ 2 min microondas</span></div>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <img src="img_mamas/rec2_pancakes.jpg" alt="Panquecas">
+          <div class="rec-card-bd">
+            <div class="rec-bar" style="background:#F9A825;"></div>
+            <div class="rec-name">Panquecas Proteicas de Banana</div>
+            <div class="rec-tags"><span class="r-tag" style="background:#FFFDE7;color:#F57F17;">Proteína</span><span class="r-tag" style="background:#FFFDE7;color:#F57F17;">Fibra</span></div>
+            <div class="rec-ing"><b>Ingredientes:</b> 2 huevos · 1 banana madura · ½ taza avena · ½ taza zanahoria rallada · canela.</div>
+            <div class="rec-steps-list">
+              <div class="rec-step"><div class="rec-sn" style="background:#F9A825;">1</div>Licuar todo. Sartén antiadherente a fuego bajo.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:#F9A825;">2</div>Cocinar hasta burbujas, dar vuelta 1 min.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:#F9A825;">3</div>Enfriar. Apilar de a 3 con papel manteca. Bolsa zip.</div>
+            </div>
+            <div class="rec-pills"><span class="rp-f">❄ 1 mes</span><span class="rp-d">☀ Sartén 1 min o tostadora</span></div>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <img src="img_mamas/rec3_meatballs.jpg" alt="Albóndigas">
+          <div class="rec-card-bd">
+            <div class="rec-bar" style="background:var(--G);"></div>
+            <div class="rec-name">Albóndigas Ocultas de Verduras</div>
+            <div class="rec-tags"><span class="r-tag" style="background:#E8F5E9;color:#2E7D32;">Proteína</span><span class="r-tag" style="background:#E8F5E9;color:#2E7D32;">Hierro</span></div>
+            <div class="rec-ing"><b>Ingredientes:</b> 400g carne picada · zapallito rallado escurrido · zanahoria · ¼ cebolla · 1 huevo · sal.</div>
+            <div class="rec-steps-list">
+              <div class="rec-step"><div class="rec-sn" style="background:var(--G);">1</div>Escurrir el zapallito exprimiendo bien.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:var(--G);">2</div>Mezclar todo. Formar bolitas tamaño ping pong.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:var(--G);">3</div>Hornear 180° 20 min. Enfriar. Congelar en bandeja, luego bolsa.</div>
+            </div>
+            <div class="rec-pills"><span class="rp-f">❄ 3 meses</span><span class="rp-d">☀ En salsa caliente 5–7 min</span></div>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <img src="img_mamas/rec4_muffins.jpg" alt="Muffins">
+          <div class="rec-card-bd">
+            <div class="rec-bar" style="background:var(--P);"></div>
+            <div class="rec-name">Muffins Salados de Espinaca</div>
+            <div class="rec-tags"><span class="r-tag" style="background:#F3E5F5;color:var(--P);">Calcio</span><span class="r-tag" style="background:#F3E5F5;color:var(--P);">Proteína</span></div>
+            <div class="rec-ing"><b>Ingredientes:</b> 4 huevos · ½ taza queso rallado · espinaca cocida · brócoli · harina de avena · cúrcuma.</div>
+            <div class="rec-steps-list">
+              <div class="rec-step"><div class="rec-sn" style="background:var(--P);">1</div>Batir huevos con todos los ingredientes.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:var(--P);">2</div>Llenar moldes de muffin ¾. Hornear 180° 22 min.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:var(--P);">3</div>Enfriar. Envolver en film individual. Bolsa zip.</div>
+            </div>
+            <div class="rec-pills"><span class="rp-f">❄ 2 meses</span><span class="rp-d">☀ 45 seg microondas</span></div>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <img src="img_mamas/rec5_fish.jpg" alt="Croquetas de pescado">
+          <div class="rec-card-bd">
+            <div class="rec-bar" style="background:var(--S);"></div>
+            <div class="rec-name">Croquetas de Pescado</div>
+            <div class="rec-tags"><span class="r-tag" style="background:#E3F2FD;color:#1565C0;">Omega 3</span><span class="r-tag" style="background:#E3F2FD;color:#1565C0;">Vitamina D</span></div>
+            <div class="rec-ing"><b>Ingredientes:</b> 400g merluza cocida sin espinas · 2 papas pisadas · perejil · 1 huevo · sal · pan rallado opcional.</div>
+            <div class="rec-steps-list">
+              <div class="rec-step"><div class="rec-sn" style="background:var(--S);">1</div>Verificar sin espinas. Desmenuzar. Mezclar con papa y huevo.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:var(--S);">2</div>Formar croquetas ovaladas. Pan rallado opcional.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:var(--S);">3</div>Congelar crudas en bandeja. Luego bolsa zip.</div>
+            </div>
+            <div class="rec-pills"><span class="rp-f">❄ 2 meses</span><span class="rp-d">☀ Horno 200° 12–15 min</span></div>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <img src="img_mamas/rec6_cookies.jpg" alt="Galletitas">
+          <div class="rec-card-bd">
+            <div class="rec-bar" style="background:#A8D44A;"></div>
+            <div class="rec-name">Galletitas Energéticas de Avena</div>
+            <div class="rec-tags"><span class="r-tag" style="background:#F9FBE7;color:#827717;">Grasas sanas</span><span class="r-tag" style="background:#F9FBE7;color:#827717;">Fibra</span></div>
+            <div class="rec-ing"><b>Ingredientes:</b> 1 banana pisada · 2 cdas maní · 1 huevo · 1 taza avena · ¼ taza nueces · chips amargo opcional.</div>
+            <div class="rec-steps-list">
+              <div class="rec-step"><div class="rec-sn" style="background:#A8D44A;">1</div>Mezclar todo. Montoncitos en bandeja con papel manteca.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:#A8D44A;">2</div>Hornear 180° 12–15 min. Enfriar bien. Bolsa zip.</div>
+            </div>
+            <div class="rec-pills"><span class="rp-f">❄ 2 meses</span><span class="rp-d">☀ 10 min a temperatura ambiente</span></div>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <img src="img_mamas/rec7_waffles.jpg" alt="Waffles">
+          <div class="rec-card-bd">
+            <div class="rec-bar" style="background:var(--G);"></div>
+            <div class="rec-name">Waffles Nutritivos de Espinaca</div>
+            <div class="rec-tags"><span class="r-tag" style="background:#E8F5E9;color:#2E7D32;">Proteína</span><span class="r-tag" style="background:#E8F5E9;color:#2E7D32;">Hierro</span></div>
+            <div class="rec-ing"><b>Ingredientes:</b> 2 huevos · ½ taza avena · ½ taza ricota · espinaca cocida · sal y cúrcuma.</div>
+            <div class="rec-steps-list">
+              <div class="rec-step"><div class="rec-sn" style="background:var(--G);">1</div>Licuar todo. Cocinar en waflera o sartén redonda.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:var(--G);">2</div>Enfriar. Papel manteca entre c/u. Bolsa zip.</div>
+            </div>
+            <div class="rec-pills"><span class="rp-f">❄ 2 meses</span><span class="rp-d">☀ Tostadora 2 min</span></div>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <img src="img_mamas/rec8_vegcubes.jpg" alt="Cubitos de verdura">
+          <div class="rec-card-bd">
+            <div class="rec-bar" style="background:var(--S);"></div>
+            <div class="rec-name">Cubitos de Verduras (el truco maestro)</div>
+            <div class="rec-tags"><span class="r-tag" style="background:#E3F2FD;color:#1565C0;">Vitaminas</span><span class="r-tag" style="background:#E3F2FD;color:#1565C0;">Minerales</span></div>
+            <div class="rec-ing"><b>Ingredientes:</b> Espinaca + brócoli + zanahoria + calabaza. Cualquier combinación. Se agregan sin que el niño note.</div>
+            <div class="rec-steps-list">
+              <div class="rec-step"><div class="rec-sn" style="background:var(--S);">1</div>Cocinar al vapor. Licuar con mínimo de agua.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:var(--S);">2</div>Cubetera 24h. Cubos a bolsa zip. Usar en sopas y salsas.</div>
+            </div>
+            <div class="rec-pills"><span class="rp-f">❄ 6 meses</span><span class="rp-d">☀ Directo a la cocción</span></div>
+          </div>
+        </div>
+
+        <div class="rec-card">
+          <img src="img_mamas/rec9_frittata.jpg" alt="Tortillitas">
+          <div class="rec-card-bd">
+            <div class="rec-bar" style="background:var(--R);"></div>
+            <div class="rec-name">Mini Tortillas Individuales</div>
+            <div class="rec-tags"><span class="r-tag" style="background:#FFEBEE;color:#C62828;">Proteína</span><span class="r-tag" style="background:#FFEBEE;color:#C62828;">Colina</span></div>
+            <div class="rec-ing"><b>Ingredientes:</b> 4 huevos · espinaca picada · queso rallado · cebolla muy picada · sal.</div>
+            <div class="rec-steps-list">
+              <div class="rec-step"><div class="rec-sn" style="background:var(--R);">1</div>Batir todo. Verter en moldes de muffin engrasados.</div>
+              <div class="rec-step"><div class="rec-sn" style="background:var(--R);">2</div>Hornear 180° 15 min. Enfriar. Film individual. Bolsa zip.</div>
+            </div>
+            <div class="rec-pills"><span class="rp-f">❄ 1 mes</span><span class="rp-d">☀ 45 seg microondas</span></div>
+          </div>
+        </div>
+
+      </div><!-- /recipe-grid -->
+
+      <!-- Video CTA freezer -->
+      <div class="video-cta">
+        <div class="video-cta-txt">
+          <h3>Ver el batch cooking en acción</h3>
+          <p>Tutorial paso a paso: preparación de las 9 recetas en 3 horas</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=batch+cooking+niños+recetas+freezer+saludable" target="_blank" class="video-cta-btn">
+          <div class="play-icon">▶</div>
+          Ver en YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════ PARTE 2: VIANDAS ══════════════════ -->
+<div id="viandas">
+  <div class="sec-banner">
+    <img src="img_mamas/kids_lunch.jpg" alt="">
+    <div class="ov" style="background:linear-gradient(to top,rgba(20,120,80,.96) 0%,rgba(20,120,80,.55) 45%,rgba(0,0,0,.1) 100%);"></div>
+    <div class="sec-num">2</div>
+    <div class="ct">
+      <div class="sec-lbl">Parte dos</div>
+      <div class="sec-ttl">Viandas para Toda la Semana</div>
+      <p class="sec-dsc">Lunchboxes coloridos con formas divertidas que los niños realmente comen</p>
+    </div>
+  </div>
+
+  <section class="sec-bg-g">
+    <div class="container">
+      <span class="sec-label" style="color:var(--G);">La fórmula infalible</span>
+      <h2 class="sec-title">Proteína + Color + Fruta + Snack = <span style="color:var(--G);">Vianda completa</span></h2>
+
+      <div class="formula-grid" style="margin-bottom:28px;">
+        <div class="f-box" style="background:#FFE5D9;border-left:4px solid var(--O);">
+          <h3 style="color:var(--O);">1 · Proteína (siempre)</h3>
+          <p>Hamburguesa · albóndiga · croqueta · huevo duro · queso · tortilla · pollo. <b>Sin proteína no hay energía para aprender.</b></p>
+        </div>
+        <div class="f-box" style="background:#E8F5E9;border-left:4px solid var(--G);">
+          <h3 style="color:var(--G);">2 · Vegetal de color</h3>
+          <p>Zanahoria en palitos · pepino · tomates cherry · brócoli. <b>Cortantes metálicos en estrella, oso o corazón — la forma cambia todo.</b></p>
+        </div>
+        <div class="f-box" style="background:#FFFDE7;border-left:4px solid #F9A825;">
+          <h3 style="color:#F57F17;">3 · Fruta dulce natural</h3>
+          <p>Uvas cortadas al medio · frutillas · durazno · mandarina · melón en estrellitas. <b>Siempre cortada, lista para comer con la mano.</b></p>
+        </div>
+        <div class="f-box" style="background:#F3E5F5;border-left:4px solid var(--P);">
+          <h3 style="color:var(--P);">4 · Snack nutritivo</h3>
+          <p>Galletita de avena · nueces · muffin salado · waffle. <b>El snack es el cierre, no el plato principal.</b></p>
+        </div>
+      </div>
+
+      <div class="trucos-box">
+        <div class="trucos-list">
+          <h3>Los 3 trucos visuales</h3>
+          <div class="step-row"><div class="step-n" style="background:var(--O);">1</div><div class="step-t" style="color:rgba(255,255,255,.75);"><b style="color:#fff;">3 colores mínimo:</b> rojo + verde + amarillo en cada vianda</div></div>
+          <div class="step-row"><div class="step-n" style="background:var(--G);">2</div><div class="step-t" style="color:rgba(255,255,255,.75);"><b style="color:#fff;">Formas divertidas:</b> cortantes de estrella, oso, corazón para pan y fruta</div></div>
+          <div class="step-row"><div class="step-n" style="background:var(--Y);"><span style="color:var(--D);">3</span></div><div class="step-t" style="color:rgba(255,255,255,.75);"><b style="color:#fff;">Compartimentos separados:</b> la comida separada se ve más atractiva</div></div>
+        </div>
+        <img src="img_mamas/lb_comp1.jpg" alt="Bento con carita" class="img-rnd" style="width:220px;height:180px;flex-shrink:0;">
+      </div>
+
+      <!-- Viandas semana -->
+      <h2 class="sec-title" style="font-size:2rem;">Las <span style="color:var(--G);">5 viandas de la semana</span></h2>
+      <div class="vianda-week">
+
+        <div class="v-card">
+          <div class="v-head" style="background:linear-gradient(90deg,var(--O),#FF8C5A);"><div class="v-day">Lunes</div><div class="v-theme">Energía max</div></div>
+          <img class="v-img" src="img_mamas/lb_comp2.jpg" alt="Lunchbox lunes">
+          <div class="v-items">
+            <div class="v-row" style="background:#FFE5D9;"><div class="v-cat" style="color:var(--O);">Proteína</div><div class="v-ct">Hamburguesa en triángulos</div></div>
+            <div class="v-row" style="background:#E8F5E9;"><div class="v-cat" style="color:var(--G);">Vegetal</div><div class="v-ct">Zanahoria + hummus dip</div></div>
+            <div class="v-row" style="background:#FFFDE7;"><div class="v-cat" style="color:#F57F17;">Fruta</div><div class="v-ct">Uvas cortadas al medio</div></div>
+            <div class="v-row" style="background:#F3E5F5;"><div class="v-cat" style="color:var(--P);">Snack</div><div class="v-ct">Galletita de avena x2</div></div>
+          </div>
+          <div class="v-tip"><b>Truco:</b> cortá el pan con cortante de estrella.</div>
+        </div>
+
+        <div class="v-card">
+          <div class="v-head" style="background:linear-gradient(90deg,var(--G),#56D98F);"><div class="v-day">Martes</div><div class="v-theme">Verde poder</div></div>
+          <img class="v-img" src="img_mamas/lb_comp3.jpg" alt="Lunchbox martes">
+          <div class="v-items">
+            <div class="v-row" style="background:#E8F5E9;"><div class="v-cat" style="color:var(--G);">Proteína</div><div class="v-ct">Albóndigas x3 con palillo</div></div>
+            <div class="v-row" style="background:#FFE5D9;"><div class="v-cat" style="color:var(--O);">Vegetal</div><div class="v-ct">Pepino + tomates cherry</div></div>
+            <div class="v-row" style="background:#FFFDE7;"><div class="v-cat" style="color:#F57F17;">Fruta</div><div class="v-ct">Frutillas enteras</div></div>
+            <div class="v-row" style="background:#F3E5F5;"><div class="v-cat" style="color:var(--P);">Snack</div><div class="v-ct">Muffin salado espinaca</div></div>
+          </div>
+          <div class="v-tip"><b>Truco:</b> palillos de madera = "pinchos" irresistibles.</div>
+        </div>
+
+        <div class="v-card">
+          <div class="v-head" style="background:linear-gradient(90deg,var(--S),#4FC3F7);"><div class="v-day">Miércoles</div><div class="v-theme">Día del mar</div></div>
+          <img class="v-img" src="img_mamas/lb_comp4.jpg" alt="Lunchbox miercoles">
+          <div class="v-items">
+            <div class="v-row" style="background:#E3F2FD;"><div class="v-cat" style="color:#1565C0;">Proteína</div><div class="v-ct">Croquetas de pescado x2</div></div>
+            <div class="v-row" style="background:#E8F5E9;"><div class="v-cat" style="color:var(--G);">Vegetal</div><div class="v-ct">Morrón rojo en tiras</div></div>
+            <div class="v-row" style="background:#FFFDE7;"><div class="v-cat" style="color:#F57F17;">Fruta</div><div class="v-ct">Durazno en cubos</div></div>
+            <div class="v-row" style="background:#FFE5D9;"><div class="v-cat" style="color:var(--O);">Snack</div><div class="v-ct">Nueces + pasas de uva</div></div>
+          </div>
+          <div class="v-tip"><b>Truco:</b> morrón en tiras = "dedos" que agarran solos.</div>
+        </div>
+
+        <div class="v-card">
+          <div class="v-head" style="background:linear-gradient(90deg,var(--P),#BA68C8);"><div class="v-day">Jueves</div><div class="v-theme">Creativo</div></div>
+          <img class="v-img" src="img_mamas/lb_comp5.jpg" alt="Lunchbox jueves">
+          <div class="v-items">
+            <div class="v-row" style="background:#F3E5F5;"><div class="v-cat" style="color:var(--P);">Proteína</div><div class="v-ct">Mini tortilla + queso</div></div>
+            <div class="v-row" style="background:#E8F5E9;"><div class="v-cat" style="color:var(--G);">Vegetal</div><div class="v-ct">Cherry + brócoli arbolito</div></div>
+            <div class="v-row" style="background:#FFFDE7;"><div class="v-cat" style="color:#F57F17;">Fruta</div><div class="v-ct">Banana en rodajas</div></div>
+            <div class="v-row" style="background:#FFE5D9;"><div class="v-cat" style="color:var(--O);">Snack</div><div class="v-ct">Panqueca enrollada con queso</div></div>
+          </div>
+          <div class="v-tip"><b>Truco:</b> panqueca enrollada = rollito que sorprende.</div>
+        </div>
+
+        <div class="v-card">
+          <div class="v-head" style="background:linear-gradient(90deg,#F9A825,#FFD600);"><div class="v-day" style="color:var(--D);">Viernes</div><div class="v-theme" style="color:rgba(30,39,46,.65);">Lo logramos</div></div>
+          <img class="v-img" src="img_mamas/sandwich_kids.jpg" alt="Lunchbox viernes">
+          <div class="v-items">
+            <div class="v-row" style="background:#FFFDE7;"><div class="v-cat" style="color:#F57F17;">Proteína</div><div class="v-ct">Waffle + palta aplastada</div></div>
+            <div class="v-row" style="background:#E8F5E9;"><div class="v-cat" style="color:var(--G);">Vegetal</div><div class="v-ct">Pepino en estrellitas</div></div>
+            <div class="v-row" style="background:#FFEBEE;"><div class="v-cat" style="color:#C62828;">Fruta</div><div class="v-ct">Sandía en cubos</div></div>
+            <div class="v-row" style="background:#F3E5F5;"><div class="v-cat" style="color:var(--P);">Snack</div><div class="v-ct">Galletita de avena</div></div>
+          </div>
+          <div class="v-tip"><b>Truco:</b> pepino con cortante de estrella — lo comen sin pedirles.</div>
+        </div>
+
+      </div><!-- /vianda-week -->
+
+      <div class="video-cta">
+        <div class="video-cta-txt">
+          <h3>Ideas de viandas para niños</h3>
+          <p>Inspiración real: lunchboxes coloridos, formitas y bentos creativos</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=viandas+niños+bento+saludable+lunchbox" target="_blank" class="video-cta-btn">
+          <div class="play-icon">▶</div>
+          Ver en YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════ PARTE 3: HÁBITOS ══════════════════ -->
+<div id="habitos">
+  <div class="sec-banner">
+    <img src="img_mamas/habit_juegos.jpg" alt="">
+    <div class="ov" style="background:linear-gradient(to top,rgba(100,0,130,.97) 0%,rgba(90,0,115,.55) 45%,rgba(0,0,0,.12) 100%);"></div>
+    <div class="sec-num">3</div>
+    <div class="ct">
+      <div class="sec-lbl">Parte tres</div>
+      <div class="sec-ttl">Hábitos con Juego y Amor</div>
+      <p class="sec-dsc">4 estrategias paso a paso para incorporar hábitos sin pelea — se vuelven juegos que quieren repetir</p>
+    </div>
+  </div>
+
+  <section class="sec-bg-p">
+    <div class="container">
+      <span class="sec-label" style="color:var(--P);">Las 4 estrategias</span>
+      <h2 class="sec-title">Jugar es la forma <span style="color:var(--P);">más rápida de aprender</span></h2>
+      <p class="sec-sub">Los niños no incorporan hábitos por instrucciones — los incorporan por repetición placentera. Estas estrategias convierten lo cotidiano en juego.</p>
+
+      <div class="hab-grid">
+
+        <div class="h-card">
+          <img src="img_mamas/habit_tableros.jpg" alt="Estrategia 1">
+          <div class="h-card-bd">
+            <div class="h-num">01</div>
+            <div class="h-title" style="color:var(--O);">La Carrera contra el Cronómetro</div>
+            <div class="h-meta"><span class="h-tag" style="background:#FFE5D9;color:var(--O);">Desde 3 años</span><span class="h-tag" style="background:#FFE5D9;color:var(--O);">Material: temporizador</span></div>
+            <div class="h-steps">
+              <div class="step-row"><div class="step-n" style="background:var(--O);">1</div><div class="step-t">Conseguí un temporizador visual de arena o digital de 2–3 min.</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--O);">2</div><div class="step-t">Decile: <b>"El reloj ya corre — ¿podés terminar antes que suene?"</b></div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--O);">3</div><div class="step-t">Si lo logra → él mismo pone una estrella en su tablero. Vos no decís nada.</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--O);">4</div><div class="step-t">5 estrellas = elige la actividad del fin de semana (él decide).</div></div>
+            </div>
+            <div class="h-tip" style="background:#FFF3E0;"><b>Para qué sirve:</b> dientes, baño, vestirse, mochila. El reloj reemplaza tu voz.</div>
+          </div>
+        </div>
+
+        <div class="h-card">
+          <img src="img_mamas/kids_happy.jpg" alt="Estrategia 2">
+          <div class="h-card-bd">
+            <div class="h-num">02</div>
+            <div class="h-title" style="color:var(--S);">El Mapa de Misiones</div>
+            <div class="h-meta"><span class="h-tag" style="background:#E3F2FD;color:#1565C0;">Desde 4 años</span><span class="h-tag" style="background:#E3F2FD;color:#1565C0;">Material: mapa + stickers</span></div>
+            <div class="h-steps">
+              <div class="step-row"><div class="step-n" style="background:var(--S);">1</div><div class="step-t">Dibujá o imprimí un mapa con 5–6 misiones de la rutina diaria.</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--S);">2</div><div class="step-t">Cada misión = el niño mueve su personaje (autito, muñeco).</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--S);">3</div><div class="step-t">Al llegar al final: <b>"¡Nivel superado!"</b> + sello de su elección.</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--S);">4</div><div class="step-t">Dejá que él mueva la pieza — la autonomía crea motivación propia.</div></div>
+            </div>
+            <div class="h-tip" style="background:#E3F2FD;"><b>Para qué sirve:</b> rutina de mañana completa. Lo aburrido se convierte en un videojuego.</div>
+          </div>
+        </div>
+
+        <div class="h-card">
+          <img src="img_mamas/habit_ficcion.jpg" alt="Estrategia 3">
+          <div class="h-card-bd">
+            <div class="h-num">03</div>
+            <div class="h-title" style="color:var(--G);">El Personaje Mágico</div>
+            <div class="h-meta"><span class="h-tag" style="background:#E8F5E9;color:#2E7D32;">2 a 7 años</span><span class="h-tag" style="background:#E8F5E9;color:#2E7D32;">Material: imaginación</span></div>
+            <div class="h-steps">
+              <div class="step-row"><div class="step-n" style="background:var(--G);">1</div><div class="step-t"><b>Dientes:</b> "El Super Cepillo vence a los Monstruos de las Caries — frotá fuerte!"</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--G);">2</div><div class="step-t"><b>Ordenar:</b> "Cada juguete tiene su casa — ¿sos el cartero que los lleva a dormir?"</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--G);">3</div><div class="step-t"><b>Manos:</b> "Cantamos la canción del jabón — lavamos hasta que termine."</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--G);">4</div><div class="step-t">Entrá en el personaje con él. Cuanto más ridícula sea tu actuación, más funciona.</div></div>
+            </div>
+            <div class="h-tip" style="background:#E8F5E9;"><b>Clave:</b> la imaginación funciona solo si vos también creés el juego.</div>
+          </div>
+        </div>
+
+        <div class="h-card">
+          <img src="img_mamas/habit_incentivos.jpg" alt="Estrategia 4">
+          <div class="h-card-bd">
+            <div class="h-num">04</div>
+            <div class="h-title" style="color:var(--P);">Incentivos sin Premios Materiales</div>
+            <div class="h-meta"><span class="h-tag" style="background:#F3E5F5;color:var(--P);">Todas las edades</span><span class="h-tag" style="background:#F3E5F5;color:var(--P);">Solo vos</span></div>
+            <div class="h-steps">
+              <div class="step-row"><div class="step-n" style="background:var(--P);">1</div><div class="step-t"><b>Baile de la victoria:</b> 60 seg de baile loco juntos. Ruidoso y memorable.</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--P);">2</div><div class="step-t"><b>Saludo secreto:</b> inventan uno juntos que usan solo en logros.</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--P);">3</div><div class="step-t"><b>Cupones:</b> "1 cupón = vos elegís el cuento" o "la cena de mañana".</div></div>
+              <div class="step-row"><div class="step-n" style="background:var(--P);">4</div><div class="step-t"><b>20 min 1:1:</b> él elige la actividad. Vos sin teléfono.</div></div>
+            </div>
+            <div class="h-tip" style="background:#F3E5F5;"><b>Clave:</b> 20 minutos completos valen más que 2 horas distraída.</div>
+          </div>
+        </div>
+
+      </div><!-- /hab-grid -->
+
+      <div class="video-cta">
+        <div class="video-cta-txt">
+          <h3>Crianza positiva y hábitos saludables</h3>
+          <p>Técnicas reales para incorporar rutinas sin conflicto</p>
+        </div>
+        <a href="https://www.youtube.com/results?search_query=habitos+saludables+niños+crianza+positiva+rutinas" target="_blank" class="video-cta-btn">
+          <div class="play-icon">▶</div>
+          Ver en YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════ CHECKLIST ══════════════════ -->
+<div id="checklist" class="checklist-sec">
+  <div class="container">
+    <span class="sec-label" style="color:var(--Y);">Tu herramienta semanal</span>
+    <h2 class="sec-title" style="color:#fff;">Checklist <span style="color:var(--Y);">Semanal</span> VITTA</h2>
+    <div class="cl-grid">
+      <div class="cl-col">
+        <div class="cl-head" style="color:var(--S);">Freezer y comida</div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--S);"></div><div class="cl-txt">Revisé el freezer y sé qué tengo</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--S);"></div><div class="cl-txt">Planifiqué las viandas de la semana</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--S);"></div><div class="cl-txt">Incluí proteína en cada vianda</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--S);"></div><div class="cl-txt">Usé 3 colores en cada lunchbox</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--S);"></div><div class="cl-txt">Usé cortantes para formas divertidas</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--S);"></div><div class="cl-txt">Tengo cubitos de verdura listos</div></div>
+      </div>
+      <div class="cl-col">
+        <div class="cl-head" style="color:var(--O);">Hábitos de la semana</div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--O);"></div><div class="cl-txt">Elegí 1 hábito para trabajar esta semana</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--O);"></div><div class="cl-txt">Preparé el juego o estrategia elegida</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--O);"></div><div class="cl-txt">Fui constante sin presionar</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--O);"></div><div class="cl-txt">Celebré cada logro genuinamente</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--O);"></div><div class="cl-txt">Le di 20 min de tiempo 1:1 sin teléfono</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--O);"></div><div class="cl-txt">Usé al menos 1 de las 4 estrategias</div></div>
+      </div>
+      <div class="cl-col">
+        <div class="cl-head" style="color:#56D98F;">Preparación mensual</div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--G);"></div><div class="cl-txt">Elegí el sábado de batch cooking</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--G);"></div><div class="cl-txt">Preparé hamburguesas o albóndigas</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--G);"></div><div class="cl-txt">Preparé muffins o waffles</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--G);"></div><div class="cl-txt">Preparé galletitas energéticas</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--G);"></div><div class="cl-txt">Preparé cubitos de verduras</div></div>
+        <div class="cl-row"><div class="cl-box" style="border-color:var(--G);"></div><div class="cl-txt">Etiqueté todo con nombre y fecha</div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;padding:28px;background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.15);border-radius:20px;">
+      <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;color:var(--Y);margin-bottom:8px;">No existe la mamá perfecta. Existe la mamá presente.</div>
+      <div style="font-size:.88rem;font-weight:300;color:rgba(255,255,255,.35);">Dolar Micaela · VITTA · Bienestar Familiar</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="f-brand">VITTA</div>
+  <div class="f-txt">Criar Sano, Criar Feliz · Dolar Micaela · 2024</div>
+</footer>
+
+</body>
+</html>
