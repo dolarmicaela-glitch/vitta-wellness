@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criar Sano, Criar Feliz · Guía completa para mamás</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500;600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --O:#FF6B35;--G:#3DBE7A;--Y:#FFD600;--P:#9C27B0;--S:#E91E63;
+  --D:#1E272E;--W:#fff;--cream:#FFF8F3;--warm:#FFF3EB;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--D);font-weight:400;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;width:100%;z-index:100;
+  padding:16px 48px;
+  background:rgba(255,248,243,.95);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,107,53,.12);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;color:var(--O);}
+.nav-logo span{color:var(--D);}
+.nav-cta{
+  background:var(--O);color:#fff;
+  padding:10px 26px;border-radius:30px;
+  font-family:'Jost',sans-serif;font-size:0.85rem;font-weight:600;
+  letter-spacing:.05em;text-decoration:none;
+  transition:background .2s;
+}
+.nav-cta:hover{background:#e55a24;}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;
+  padding-top:80px;
+}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+.hero-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,
+    rgba(255,248,243,1) 0%,
+    rgba(255,248,243,.98) 38%,
+    rgba(255,248,243,.7) 60%,
+    rgba(255,248,243,.1) 80%,
+    transparent 100%);
+}
+.hero-ct{
+  position:relative;z-index:2;
+  max-width:1200px;margin:0 auto;width:100%;
+  padding:80px 48px 100px;
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;
+}
+.hero-left{}
+.hero-badge{
+  display:inline-flex;background:var(--Y);color:var(--D);
+  padding:8px 22px;border-radius:30px;
+  font-family:'Jost',sans-serif;font-size:0.8rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px;
+}
+.hero-title{
+  font-family:'Nunito',sans-serif;font-weight:900;
+  font-size:clamp(2.8rem,5vw,4.2rem);line-height:.92;
+  color:var(--D);margin-bottom:12px;
+}
+.hero-title span{color:var(--O);}
+.hero-sub{
+  font-size:1.15rem;font-weight:300;color:#5A4A3A;
+  line-height:1.7;max-width:480px;margin-bottom:32px;
+}
+.hero-price-box{
+  display:flex;align-items:center;gap:16px;
+  background:#fff;border:2px solid rgba(255,107,53,.2);
+  border-radius:16px;padding:18px 24px;margin-bottom:28px;
+  width:fit-content;
+}
+.hero-old{font-size:0.9rem;color:#9E8574;text-decoration:line-through;}
+.hero-new{font-family:'Nunito',sans-serif;font-weight:900;font-size:2rem;color:var(--O);}
+.hero-promo{
+  background:var(--O);color:#fff;
+  font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 12px;border-radius:20px;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--O);color:#fff;
+  padding:16px 36px;border-radius:40px;
+  font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;
+  text-decoration:none;transition:.2s;
+  box-shadow:0 8px 24px rgba(255,107,53,.35);
+}
+.btn-primary:hover{background:#e55a24;transform:translateY(-2px);}
+.btn-secondary{
+  background:transparent;color:var(--D);
+  border:2px solid rgba(30,39,46,.2);
+  padding:16px 32px;border-radius:40px;
+  font-family:'Nunito',sans-serif;font-size:1rem;font-weight:700;
+  text-decoration:none;transition:.2s;
+}
+.btn-secondary:hover{border-color:var(--O);color:var(--O);}
+.hero-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
+.chip{
+  background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.2);
+  color:var(--O);padding:6px 16px;border-radius:20px;
+  font-family:'Jost',sans-serif;font-size:0.75rem;font-weight:600;
+}
+
+/* ── SECTION BASE ── */
+section{padding:100px 48px;}
+.container{max-width:1100px;margin:0 auto;}
+.s-label{
+  font-family:'Jost',sans-serif;font-size:0.75rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--O);
+  margin-bottom:12px;display:block;
+}
+.s-title{
+  font-family:'Nunito',sans-serif;font-weight:900;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.05;color:var(--D);
+  margin-bottom:16px;
+}
+.s-title span{color:var(--O);}
+.s-desc{font-size:1rem;font-weight:300;color:#5A4A3A;line-height:1.75;max-width:580px;}
+
+/* ── DOLOR ── */
+.dolor{background:var(--D);}
+.dolor .s-title{color:#fff;}
+.dolor .s-desc{color:rgba(255,255,255,.6);max-width:100%;}
+.dolor-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;
+}
+.dolor-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;padding:32px 28px;
+}
+.dolor-icon{font-size:2.2rem;margin-bottom:16px;}
+.dolor-q{
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:1.1rem;
+  color:#fff;line-height:1.3;margin-bottom:10px;
+}
+.dolor-a{font-size:0.9rem;color:rgba(255,255,255,.5);line-height:1.65;}
+
+/* ── QUÉ RECIBÍS ── */
+.que-recibes{background:#fff;}
+.productos-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:56px;
+}
+.producto-card{
+  border-radius:24px;overflow:hidden;
+  border:2px solid rgba(255,107,53,.12);
+  transition:.3s;
+}
+.producto-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(255,107,53,.12);}
+.producto-cover{
+  height:280px;position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;
+}
+.producto-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.producto-cover .ov{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(30,39,46,.9) 0%, transparent 60%);
+}
+.producto-cover-label{
+  position:relative;z-index:2;padding:20px 24px;width:100%;
+}
+.pc-tipo{
+  font-family:'Jost',sans-serif;font-size:0.7rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin-bottom:4px;
+}
+.pc-nombre{
+  font-family:'Nunito',sans-serif;font-weight:900;font-size:1.4rem;color:#fff;
+}
+.pc-badge{
+  display:inline-flex;margin-top:8px;
+  padding:5px 14px;border-radius:20px;
+  font-family:'Jost',sans-serif;font-size:0.68rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+}
+.producto-body{padding:28px;}
+.producto-titulo{
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:1.1rem;
+  color:var(--D);margin-bottom:10px;
+}
+.producto-desc{font-size:0.9rem;color:#5A4A3A;line-height:1.65;margin-bottom:18px;}
+.producto-lista{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.producto-lista li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:0.88rem;color:#5A4A3A;line-height:1.5;
+}
+.producto-lista li::before{
+  content:'';width:20px;height:20px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.check-o::before{background:rgba(255,107,53,.15);background-image:url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6L5 9L10 3' stroke='%23FF6B35' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;}
+.check-g::before{background:rgba(61,190,122,.15);background-image:url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6L5 9L10 3' stroke='%233DBE7A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;}
+
+/* ── CONTENIDO DETALLE ── */
+.contenido{background:var(--warm);}
+.partes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
+.parte-card{
+  background:#fff;border-radius:20px;overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.04);
+}
+.parte-header{padding:24px 24px 20px;}
+.parte-num{
+  font-family:'Nunito',sans-serif;font-weight:900;font-size:3rem;
+  opacity:.08;line-height:1;margin-bottom:-16px;
+}
+.parte-icon{font-size:2rem;margin-bottom:10px;}
+.parte-nombre{
+  font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;
+  line-height:1.2;margin-bottom:6px;
+}
+.parte-sub{font-size:0.82rem;color:#7A6A5A;line-height:1.55;}
+.parte-items{border-top:1px solid rgba(0,0,0,.05);padding:20px 24px;display:flex;flex-direction:column;gap:9px;}
+.parte-item{
+  display:flex;align-items:center;gap:10px;
+  font-size:0.85rem;color:#5A4A3A;
+}
+.parte-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+/* ── PREVIEW INTERACTIVO ── */
+.preview-section{background:#fff;}
+.preview-frame-wrap{
+  margin-top:48px;border-radius:24px;overflow:hidden;
+  border:3px solid rgba(255,107,53,.15);
+  box-shadow:0 20px 60px rgba(0,0,0,.08);
+  height:600px;position:relative;
+}
+.preview-frame-wrap iframe{width:100%;height:100%;border:none;display:block;}
+.preview-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(255,248,243,1) 0%, transparent 35%);
+  pointer-events:none;
+}
+.preview-cta{
+  text-align:center;margin-top:32px;
+}
+.preview-cta p{font-size:0.95rem;color:#5A4A3A;margin-bottom:16px;}
+
+/* ── SOBRE MÍ ── */
+.sobre-mi{background:var(--D);}
+.sobre-grid{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;}
+.sobre-foto{
+  width:220px;height:220px;border-radius:50%;overflow:hidden;
+  border:4px solid var(--O);flex-shrink:0;
+}
+.sobre-foto img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.sobre-nombre{
+  font-family:'Nunito',sans-serif;font-weight:900;font-size:1.8rem;
+  color:#fff;margin-bottom:4px;
+}
+.sobre-cargo{
+  font-family:'Jost',sans-serif;font-size:0.8rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--O);margin-bottom:18px;
+}
+.sobre-bio{font-size:1rem;color:rgba(255,255,255,.65);line-height:1.75;max-width:560px;}
+
+/* ── PRECIO ── */
+.precio-section{background:var(--O);text-align:center;}
+.precio-section .s-label{color:rgba(255,255,255,.65);}
+.precio-section .s-title{color:#fff;}
+.precio-section .s-title span{color:var(--Y);}
+.precio-box{
+  display:inline-flex;flex-direction:column;align-items:center;
+  background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.25);
+  border-radius:28px;padding:40px 60px;margin:40px 0;
+  gap:8px;
+}
+.precio-old{font-size:1rem;color:rgba(255,255,255,.55);text-decoration:line-through;}
+.precio-new{
+  font-family:'Nunito',sans-serif;font-weight:900;
+  font-size:3.5rem;color:#fff;line-height:1;
+}
+.precio-moneda{font-size:1.5rem;vertical-align:super;}
+.precio-desc{font-size:0.9rem;color:rgba(255,255,255,.65);}
+.precio-incluye{
+  display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:24px 0 40px;
+}
+.pi-item{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.12);border-radius:30px;
+  padding:10px 20px;font-size:0.85rem;color:#fff;
+}
+.precio-section .btn-primary{
+  background:#fff;color:var(--O);font-size:1.1rem;padding:18px 52px;
+  box-shadow:0 8px 30px rgba(0,0,0,.15);
+}
+.precio-section .btn-primary:hover{background:var(--Y);color:var(--D);}
+.precio-garantia{
+  margin-top:20px;font-size:0.82rem;color:rgba(255,255,255,.5);
+}
+
+/* ── FAQ ── */
+.faq{background:var(--cream);}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:52px;}
+.faq-item{
+  background:#fff;border-radius:16px;padding:26px 28px;
+  border:1px solid rgba(0,0,0,.06);
+}
+.faq-q{
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;
+  color:var(--D);margin-bottom:10px;
+}
+.faq-a{font-size:0.9rem;color:#5A4A3A;line-height:1.65;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--D);padding:40px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:16px;
+}
+.foot-logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.2rem;color:var(--O);}
+.foot-txt{font-size:0.8rem;color:rgba(255,255,255,.35);}
+.foot-links{display:flex;gap:24px;}
+.foot-links a{font-size:0.8rem;color:rgba(255,255,255,.4);text-decoration:none;}
+.foot-links a:hover{color:var(--O);}
+
+@media(max-width:900px){
+  nav{padding:14px 24px;}
+  .hero-ct{grid-template-columns:1fr;padding:60px 24px 80px;}
+  .hero-ov{background:linear-gradient(to top,rgba(255,248,243,1) 0%,rgba(255,248,243,.97) 55%,rgba(255,248,243,.4) 80%,transparent 100%);}
+  section{padding:72px 24px;}
+  .dolor-grid,.partes-grid,.faq-grid{grid-template-columns:1fr;}
+  .productos-grid{grid-template-columns:1fr;}
+  .sobre-grid{grid-template-columns:1fr;text-align:center;}
+  .sobre-foto{width:160px;height:160px;margin:0 auto;}
+  .precio-box{padding:32px 28px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">VITTA<span> · Criar Sano</span></div>
+  <a href="#precio" class="nav-cta">Quiero la guía →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-bg" src="img_mamas/port_f.jpg" alt="Niña con arcoiris">
+  <div class="hero-ov"></div>
+  <div class="hero-ct">
+    <div class="hero-left">
+      <div class="hero-badge">Guía para mamás</div>
+      <h1 class="hero-title">Criar <span>Sano,</span><br>Criar <span>Feliz</span></h1>
+      <p class="hero-sub">La guía completa para que la alimentación de tus hijos deje de ser una batalla diaria. Freezer organizado, viandas reales y hábitos que funcionan.</p>
+      <div class="hero-price-box">
+        <div>
+          <div class="hero-old">$ 70.000 ARS</div>
+          <div class="hero-new">$ 24.000 <span style="font-size:1rem;font-weight:600;">ARS</span></div>
+        </div>
+        <div class="hero-promo">Promo lanzamiento</div>
+      </div>
+      <div class="hero-btns">
+        <a href="#precio" class="btn-primary">Quiero la guía completa →</a>
+        <a href="ebook_mamas_interactivo.html" target="_blank" class="btn-secondary">Ver preview gratis</a>
+      </div>
+      <div class="hero-chips">
+        <div class="chip">9 recetas de freezer</div>
+        <div class="chip">5 viandas semanales</div>
+        <div class="chip">4 estrategias de hábitos</div>
+        <div class="chip">Descarga inmediata</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOLOR -->
+<section class="dolor">
+  <div class="container">
+    <span class="s-label" style="color:rgba(255,200,100,.7);">¿Te sentís identificada?</span>
+    <h2 class="s-title" style="color:#fff;">¿Cuánto tiempo perdés<br>cada día con esto?</h2>
+    <div class="dolor-grid">
+      <div class="dolor-card">
+        <div class="dolor-icon">😩</div>
+        <div class="dolor-q">"¡No quiero eso!" — todos los días, a la hora de comer.</div>
+        <div class="dolor-a">Preparás algo diferente y tampoco lo come. El freezer vacío y vos sin ideas.</div>
+      </div>
+      <div class="dolor-card">
+        <div class="dolor-icon">⏰</div>
+        <div class="dolor-q">Llegás del trabajo y no sabés qué ponerle en la vianda de mañana.</div>
+        <div class="dolor-a">Siempre lo mismo, siempre improvisado, siempre con culpa de no poder hacer más.</div>
+      </div>
+      <div class="dolor-card">
+        <div class="dolor-icon">😤</div>
+        <div class="dolor-q">Lavarse los dientes, bañarse, ordenar — una batalla cada noche.</div>
+        <div class="dolor-a">Terminás el día agotada y sin saber cómo lograr que esas rutinas sean automáticas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUÉ RECIBÍS -->
+<section class="que-recibes" id="producto">
+  <div class="container">
+    <span class="s-label">Lo que recibís</span>
+    <h2 class="s-title">Dos formatos,<br>una sola compra</h2>
+    <p class="s-desc">Diseñé esta guía en dos versiones para que la uses como más te sirva — en papel o en pantalla.</p>
+    <div class="productos-grid">
+
+      <!-- PDF EBOOK -->
+      <div class="producto-card">
+        <div class="producto-cover">
+          <img src="img_mamas/mealprep2.jpg" alt="Ebook PDF">
+          <div class="ov"></div>
+          <div class="producto-cover-label">
+            <div class="pc-tipo">Formato 1</div>
+            <div class="pc-nombre">E-book PDF</div>
+            <span class="pc-badge" style="background:var(--O);color:#fff;">Descarga inmediata</span>
+          </div>
+        </div>
+        <div class="producto-body">
+          <div class="producto-titulo">La guía completa en tus manos</div>
+          <div class="producto-desc">Un PDF de 15 páginas diseñado en A4 con fotos reales, recetas detalladas y tablas de congelado. Imprimilo o tenelo siempre en el celular.</div>
+          <ul class="producto-lista">
+            <li class="check-o">15 páginas con diseño profesional y fotos reales</li>
+            <li class="check-o">9 recetas de batch cooking con pasos claros</li>
+            <li class="check-o">Tabla de congelado: qué, cómo y cuánto tiempo</li>
+            <li class="check-o">5 viandas semanales Lunes a Viernes</li>
+            <li class="check-o">4 estrategias de hábitos paso a paso</li>
+            <li class="check-o">Checklist semanal imprimible</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- HTML INTERACTIVO -->
+      <div class="producto-card">
+        <div class="producto-cover">
+          <img src="img_mamas/kids_lunch.jpg" alt="HTML Interactivo">
+          <div class="ov"></div>
+          <div class="producto-cover-label">
+            <div class="pc-tipo">Formato 2</div>
+            <div class="pc-nombre">Guía Interactiva</div>
+            <span class="pc-badge" style="background:var(--G);color:#fff;">Acceso online</span>
+          </div>
+        </div>
+        <div class="producto-body">
+          <div class="producto-titulo">La misma guía, en versión web navegable</div>
+          <div class="producto-desc">Una página web completa que podés abrir desde cualquier dispositivo. Tiene navegación, videos, recetas con fotos grandes y todo el contenido organizado por secciones.</div>
+          <ul class="producto-lista">
+            <li class="check-g">Navegación por secciones (freezer, viandas, hábitos)</li>
+            <li class="check-g">Fotos grandes de cada receta y lunchbox</li>
+            <li class="check-g">Links a videos de YouTube relacionados</li>
+            <li class="check-g">Funciona en celular, tablet y computadora</li>
+            <li class="check-g">Se abre al instante, sin descargar nada</li>
+            <li class="check-g">Ideal para tenerla abierta mientras cocinás</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTENIDO DETALLE -->
+<section class="contenido">
+  <div class="container">
+    <span class="s-label">Contenido completo</span>
+    <h2 class="s-title">Todo lo que trae<br>la <span>guía</span></h2>
+    <p class="s-desc">Tres partes diseñadas para trabajar juntas y que tu semana fluya sin improvisar.</p>
+    <div class="partes-grid">
+
+      <div class="parte-card">
+        <div class="parte-header">
+          <div class="parte-num" style="color:var(--O);">01</div>
+          <div class="parte-icon">🧊</div>
+          <div class="parte-nombre" style="color:var(--O);">Sistema Freezer</div>
+          <div class="parte-sub">Cocinás una vez y tenés para toda la semana. Las recetas son simples, rápidas y los chicos las comen.</div>
+        </div>
+        <div class="parte-items">
+          <div class="parte-item"><div class="parte-dot" style="background:var(--O);"></div>Milanesas de avena y semillas</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--O);"></div>Pancakes proteicos de banana</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--O);"></div>Bolitas de carne al horno</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--O);"></div>Muffins de vegetales</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--O);"></div>Medallones de pescado</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--O);"></div>Cookies de avena y miel</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--O);"></div>Waffles integrales</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--O);"></div>Cubitos de vegetales</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--O);"></div>Frittata de espinaca</div>
+        </div>
+      </div>
+
+      <div class="parte-card">
+        <div class="parte-header">
+          <div class="parte-num" style="color:var(--G);">02</div>
+          <div class="parte-icon">🥡</div>
+          <div class="parte-nombre" style="color:var(--G);">Viandas Semanales</div>
+          <div class="parte-sub">Lunes a viernes resuelto. Con fotos reales de cada lunchbox, compartimentos y combinaciones que comen.</div>
+        </div>
+        <div class="parte-items">
+          <div class="parte-item"><div class="parte-dot" style="background:var(--G);"></div>Lunes: bento con milanesa de avena</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--G);"></div>Martes: rollitos de jamón y queso</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--G);"></div>Miércoles: muffin + palitos de zanahoria</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--G);"></div>Jueves: frittata + frutas con formas</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--G);"></div>Viernes: pancake + yogur + frutillas</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--G);"></div>Fórmula 3 colores + proteína + snack</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--G);"></div>Tips para que la vianda vuelva vacía</div>
+        </div>
+      </div>
+
+      <div class="parte-card">
+        <div class="parte-header">
+          <div class="parte-num" style="color:var(--P);">03</div>
+          <div class="parte-icon">🎮</div>
+          <div class="parte-nombre" style="color:var(--P);">Hábitos con Juego</div>
+          <div class="parte-sub">4 estrategias probadas para que lavarse los dientes, ordenar y comer bien sean rutinas que piden repetir.</div>
+        </div>
+        <div class="parte-items">
+          <div class="parte-item"><div class="parte-dot" style="background:var(--P);"></div>La Carrera contra el Cronómetro</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--P);"></div>El Mapa de Misiones</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--P);"></div>El Personaje Mágico</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--P);"></div>Incentivos sin Premios Materiales</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--P);"></div>5 pasos detallados por estrategia</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--P);"></div>Edad recomendada y materiales</div>
+          <div class="parte-item"><div class="parte-dot" style="background:var(--P);"></div>Checklist semanal de seguimiento</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PREVIEW INTERACTIVO -->
+<section class="preview-section">
+  <div class="container">
+    <span class="s-label">Mirá antes de comprar</span>
+    <h2 class="s-title">Explorá la guía<br><span>interactiva gratis</span></h2>
+    <p class="s-desc">Este es el formato web que recibís. Navegala completa antes de decidir.</p>
+    <div class="preview-frame-wrap">
+      <iframe src="ebook_mamas_interactivo.html" title="Preview Criar Sano Criar Feliz"></iframe>
+      <div class="preview-overlay"></div>
+    </div>
+    <div class="preview-cta">
+      <p>¿Te gustó lo que viste? El PDF imprimible viene incluido en la misma compra.</p>
+      <a href="#precio" class="btn-primary">Quiero ambos formatos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="sobre-mi">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-foto">
+        <img src="img_mamas/mama_cocina.jpg" alt="Micaela">
+      </div>
+      <div>
+        <div class="sobre-nombre">Hola, soy Micaela</div>
+        <div class="sobre-cargo">Nutricionista · VITTA Wellness</div>
+        <p class="sobre-bio">Creé esta guía porque sé lo que es llegar al final del día sin energía y sin saber qué poner en la vianda de mañana. Combine mi formación en nutrición con estrategias reales de crianza para darte un sistema que funciona — no una lista de deseos imposibles. Cada receta fue probada por chicos reales, y cada estrategia de hábitos está basada en psicología del desarrollo infantil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIO -->
+<section class="precio-section" id="precio">
+  <div class="container" style="text-align:center;">
+    <span class="s-label">Precio de lanzamiento</span>
+    <h2 class="s-title">Todo por un precio <span>especial</span></h2>
+    <div class="precio-box">
+      <div class="precio-old">Precio normal: $ 70.000 ARS</div>
+      <div class="precio-new"><span class="precio-moneda">$</span> 24.000 <span style="font-size:1.2rem;font-weight:600;">ARS</span></div>
+      <div class="precio-desc">Precio de lanzamiento · Acceso de por vida</div>
+    </div>
+    <div class="precio-incluye">
+      <div class="pi-item">✓ E-book PDF (15 páginas)</div>
+      <div class="pi-item">✓ Guía interactiva online</div>
+      <div class="pi-item">✓ Checklist semanal</div>
+      <div class="pi-item">✓ Acceso de por vida</div>
+    </div>
+    <a href="#" class="btn-primary" id="btn-comprar-main">Comprar ahora — $ 24.000 ARS →</a>
+    <div class="precio-garantia">Pago seguro vía Hotmart · Descarga inmediata después de la compra</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <span class="s-label">Preguntas frecuentes</span>
+    <h2 class="s-title">Todo lo que<br>querés saber</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">¿Cómo recibo los archivos después de comprar?</div>
+        <div class="faq-a">Inmediatamente después del pago recibís un email de Hotmart con el link de descarga del PDF y el acceso a la guía interactiva online.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Para qué edad de niños está pensada la guía?</div>
+        <div class="faq-a">Las recetas y viandas son para chicos de 2 a 12 años. Las estrategias de hábitos tienen recomendaciones específicas desde los 2 hasta los 10 años.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Necesito mucho tiempo para cocinar las recetas?</div>
+        <div class="faq-a">El sistema de batch cooking está diseñado para cocinar todo en una sola sesión de 2-3 horas el fin de semana, y tener el freezer listo para toda la semana.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿La guía interactiva funciona en el celular?</div>
+        <div class="faq-a">Sí, está completamente optimizada para móvil. Podés abrirla desde el celular mientras cocinás, sin descargar ninguna app.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿El precio incluye los dos formatos?</div>
+        <div class="faq-a">Sí, con una sola compra recibís el PDF descargable y el acceso a la versión interactiva online. No hay cobros adicionales.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Cuánto tiempo dura el precio de lanzamiento?</div>
+        <div class="faq-a">Es por tiempo limitado mientras estoy en la etapa de lanzamiento. Después el precio vuelve a $ 70.000 ARS.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:52px;">
+      <a href="#precio" class="btn-primary">Aprovechar el precio de lanzamiento →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">VITTA</div>
+  <div class="foot-txt">© 2026 Dolar Micaela · VITTA Wellness · Todos los derechos reservados</div>
+  <div class="foot-links">
+    <a href="https://dolarmicaela-glitch.github.io/vitta-wellness/" target="_blank">Web VITTA</a>
+    <a href="ebook_mamas_interactivo.html" target="_blank">Ver guía</a>
+  </div>
+</footer>
+
+</body>
+</html>
