@@ -1,0 +1,75 @@
+media:
+  input: media
+  output: /media
+
+content:
+  - name: site
+    label: VITTA · Administración
+    type: file
+    path: content/site.json
+    fields:
+      - name: hero_eyebrow
+        label: Portada · línea superior
+        type: string
+      - name: hero_title
+        label: Portada · título
+        type: string
+        description: Podés usar <br> para saltos de línea y <em>...</em> para destacar en dorado/cursiva.
+      - name: hero_subtitle
+        label: Portada · descripción
+        type: text
+      - name: about_1
+        label: Sobre mí · párrafo 1
+        type: text
+      - name: about_2
+        label: Sobre mí · párrafo 2
+        type: text
+      - name: about_3
+        label: Sobre mí · párrafo 3
+        type: text
+      - name: stat_people
+        label: Personas acompañadas
+        type: string
+      - name: stat_years
+        label: Años de experiencia
+        type: string
+      - name: stat_programs
+        label: Programas especializados
+        type: string
+      - name: price_plan_1
+        label: Precio · Metabolismo, Hidratación & Sueño
+        type: string
+      - name: price_plan_2
+        label: Precio · Regulación Hormonal & Disruptores
+        type: string
+      - name: price_plan_3
+        label: Precio · Entrenamiento de Gimnasio
+        type: string
+      - name: price_plan_4
+        label: Precio · Adiós Hinchazón + Recetas
+        type: string
+      - name: price_plan_5
+        label: Precio · Guía SIBO
+        type: string
+      - name: price_plan_6
+        label: Precio · Adiós Ansiedad a Comer
+        type: string
+      - name: price_plan_7
+        label: Precio · El Poder del Agua
+        type: string
+      - name: price_vitta_reset
+        label: Precio · VITTA Reset
+        type: string
+      - name: whatsapp
+        label: WhatsApp
+        type: string
+        description: Número internacional sin + ni espacios. Ejemplo 543584012123.
+      - name: instagram
+        label: Instagram
+        type: string
+      - name: main_cta_text
+        label: Botón principal · texto
+        type: string
+      - name: consult_cta_text
+        label: Botón consulta · texto
+        type: string
