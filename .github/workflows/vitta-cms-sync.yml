@@ -25,13 +25,17 @@ jobs:
           from pathlib import Path
 
           site = json.loads(Path('content/site.json').read_text(encoding='utf-8'))
+
+          # -----------------------------
+          # WEB PRINCIPAL: index.html
+          # -----------------------------
           p = Path('index.html')
           html = p.read_text(encoding='utf-8')
 
           # Quitar cualquier intento anterior de cargar el puente JS.
           html = html.replace('<script src="vitta-admin.js"></script>', '')
 
-          def replace_one(pattern, value, text=html, flags=0):
+          def replace_one(pattern, value, text, flags=0):
               if value is None or value == '':
                   return text
               return re.sub(pattern, lambda m: m.group(1) + str(value) + m.group(2), text, count=1, flags=flags)
@@ -88,14 +92,59 @@ jobs:
 
           p.write_text(html, encoding='utf-8')
 
+          # -----------------------------
+          # LANDING VITTA RESET
+          # -----------------------------
+          reset_path = Path('vitta-reset.html')
+          reset_html = reset_path.read_text(encoding='utf-8')
+          reset_price = site.get('price_vitta_reset')
+
+          if reset_price is not None and reset_price != '':
+              # Precio del hero
+              reset_html = re.sub(
+                  r'(<span class="hero-precio-ahora">\$).*?( ARS</span>)',
+                  lambda m: m.group(1) + str(reset_price) + m.group(2),
+                  reset_html, count=1, flags=re.S
+              )
+
+              # Bloque principal de precio
+              reset_html = re.sub(
+                  r'(<span id="precio-landing" contenteditable="true">).*?(</span>)',
+                  lambda m: m.group(1) + str(reset_price) + m.group(2),
+                  reset_html, count=1, flags=re.S
+              )
+
+              # CTA intermedio
+              reset_html = re.sub(
+                  r'(Obtener todo por \$<span contenteditable="true">).*?(</span> ARS →)',
+                  lambda m: m.group(1) + str(reset_price) + m.group(2),
+                  reset_html, count=1, flags=re.S
+              )
+
+              # Comparación de valor
+              reset_html = re.sub(
+                  r'(<div class="valor-vitta-price">\$).*?(</div>)',
+                  lambda m: m.group(1) + str(reset_price) + m.group(2),
+                  reset_html, count=1, flags=re.S
+              )
+
+              # CTA final
+              reset_html = re.sub(
+                  r'(<div class="final-price"><span>\$</span> <span contenteditable="true">).*?(</span> ARS</div>)',
+                  lambda m: m.group(1) + str(reset_price) + m.group(2),
+                  reset_html, count=1, flags=re.S
+              )
+
+          reset_path.write_text(reset_html, encoding='utf-8')
+
       - name: Guardar cambios en la web
         run: |
-          if git diff --quiet -- index.html; then
+          if git diff --quiet -- index.html vitta-reset.html; then
             echo "No hay cambios para publicar."
             exit 0
           fi
           git config user.name "VITTA CMS"
           git config user.email "actions@users.noreply.github.com"
-          git add index.html
-          git commit -m "Actualizar web desde Pages CMS"
+          git add index.html vitta-reset.html
+          git commit -m "Actualizar web y landing desde Pages CMS"
           git push
