@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Tu compra · VITTA Reset</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#fbf8f4;color:#3d2b1f;font-family:Jost,sans-serif;font-weight:400;line-height:1.65}
+    main{max-width:850px;margin:auto;padding:38px 22px 54px}.brand{color:#8b6f4e;letter-spacing:.2em;text-align:center;font-size:20px}.back{display:inline-block;color:#6b5240;font-size:13px;margin-top:20px;text-underline-offset:4px}
+    header{text-align:center;padding:34px 0 27px}.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8b6f4e}h1{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,8vw,60px);font-weight:400;line-height:1.1;margin:12px 0 16px}header p{max-width:490px;margin:auto;color:#6b5240;font-size:15px}
+    .cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}.card{background:#fff;border:1px solid #e8ddd0;border-radius:16px;padding:30px;min-width:0}.card-contact{background:#f5efe6}.step{color:#8b6f4e;font-size:11px;letter-spacing:.14em;text-transform:uppercase}h2{font-family:'Cormorant Garamond',serif;font-size:29px;line-height:1.2;font-weight:500;margin:12px 0 14px}.amount{font-family:'Cormorant Garamond',serif;font-size:52px;line-height:1.2;margin:12px 0 0}.amount small{font-family:Jost,sans-serif;font-size:14px}.caption{font-size:12px;color:#6b5240;margin:5px 0 25px}.card p{color:#6b5240;font-size:14px}.button{display:block;width:100%;border:0;border-radius:6px;padding:17px 16px;font-family:Jost,sans-serif;font-size:14px;line-height:1.4;font-weight:500;text-align:center;text-decoration:none;cursor:pointer;background:#3d2b1f;color:#fff}.button-contact{background:#416554;margin-top:24px}.button:hover{filter:brightness(1.12)}.button:disabled{opacity:.65;cursor:wait}.button:focus-visible,a:focus-visible{outline:3px solid #b8936a;outline-offset:4px}.fine{font-size:12px!important;line-height:1.6}.error{color:#9b3224!important;margin:14px 0 0!important}.status{border:1px solid #c8b89a;border-radius:12px;padding:20px 24px;background:#f5efe6;margin:0 0 22px}.status h2{font-size:27px;margin-top:0}.status p{margin-bottom:0;font-size:14px}.status[data-state=approved]{border-color:#799584;background:#eef4ef}.status[data-state=rejected]{border-color:#c9a594}footer{text-align:center;font-size:13px;color:#8b6f4e;letter-spacing:.16em;padding-top:34px}[hidden]{display:none!important}
+    @media(max-width:620px){main{padding:25px 18px 35px}.cards{grid-template-columns:1fr;gap:16px}.card{padding:25px}header{padding:28px 0 24px}.amount{font-size:48px}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand">VITTA</div>
+    <a class="back" href="vitta-reset.html?v=49870">← Volver al programa</a>
+    <header><div class="eyebrow">Programa digital · pago único</div><h1>Tu VITTA Reset</h1><p>Completá tu compra y coordiná con Mica la entrega de tu programa.</p></header>
+    <section class="status" id="payment-status" role="status" aria-live="polite" hidden><h2 id="status-title"></h2><p id="status-text"></p></section>
+    <div class="cards">
+      <section class="card" id="purchase-card" aria-labelledby="pay-title">
+        <div class="step">01 · Tu compra</div><h2 id="pay-title">Pagá con Mercado Pago</h2>
+        <div class="amount">$<span id="checkout-price">49.870</span> <small>ARS</small></div><div class="caption">Un solo pago · VITTA Reset completo</div>
+        <button class="button" id="pay-button" type="button" disabled>Pagar con Mercado Pago</button>
+        <p class="fine">Elegí el medio de pago en Mercado Pago. Después, volvé para comunicarte con Mica.</p>
+        <p class="error" id="payment-error" role="alert" hidden></p>
+        <noscript><p>Activá JavaScript para abrir el pago online o escribile a Mica por WhatsApp.</p></noscript>
+      </section>
+      <section class="card card-contact" aria-labelledby="contact-title">
+        <div class="step">02 · Después del pago</div><h2 id="contact-title">Recibí tu programa</h2>
+        <p>Enviá el comprobante por WhatsApp. Mica verifica la acreditación y coordina con vos la entrega de los materiales.</p>
+        <a class="button button-contact" id="mica-contact" href="https://wa.me/543584012123?text=Hola%2C%20Mica.%20Te%20escribo%20por%20mi%20compra%20de%20VITTA%20Reset.%20Quiero%20coordinar%20la%20entrega%20del%20programa." target="_blank" rel="noopener noreferrer">Comunicarte con Mica</a>
+        <p class="fine">También podés escribirle si tenés una consulta antes de comprar.</p>
+      </section>
+    </div>
+    <footer>VITTA</footer>
+  </main>
+  <script src="assets/vitta-checkout.js"></script>
+</body>
+</html>

@@ -3,8 +3,9 @@
   functions = "netlify/functions"
 
 [[headers]]
-  for = "/.netlify/functions/*"
+  for = "/.netlify/functions/capi"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "POST, OPTIONS"
     Access-Control-Allow-Headers = "Content-Type"
+
