@@ -11,7 +11,7 @@ class CheckoutError extends Error {
 
 function settings(env = process.env) {
   const accessToken = env.MP_ACCESS_TOKEN;
-  const rawUrl = env.CHECKOUT_SITE_URL || env.URL;
+  const rawUrl = env.CHECKOUT_SITE_URL || env.URL || site.checkout_api_base_url;
   const amount = Number(String(site.price_vitta_reset).replace(/\./g, '').replace(',', '.'));
   if (!accessToken || !rawUrl) throw new CheckoutError(503, 'El pago online no está disponible en este momento.');
   let url;

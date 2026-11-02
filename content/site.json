@@ -19,5 +19,6 @@
   "whatsapp": "543584012123",
   "instagram": "https://www.instagram.com/vitta.inc/",
   "main_cta_text": "Ver Planes",
-  "consult_cta_text": "Agendar Consulta"
+  "consult_cta_text": "Agendar Consulta",
+  "checkout_api_base_url": "https://vitta-wellness.netlify.app"
 }

@@ -70,7 +70,7 @@
     }
   } catch (configError) { showError(configError.message); }
 
-  button.addEventListener('click', async function () {
+  async function openCheckout() {
     if (!apiBase || button.disabled) return;
     button.disabled = true; button.textContent = 'Abriendo Mercado Pago…'; error.hidden = true;
     try {
@@ -81,5 +81,8 @@
     } catch (paymentError) {
       showError(paymentError.message); button.disabled = false; button.textContent = 'Pagar con Mercado Pago';
     }
-  });
+  }
+  button.addEventListener('click', openCheckout);
+  const startQuery = new URLSearchParams(location.search);
+  if (startQuery.get('start') === '1' && !startQuery.has('session') && apiBase && !button.disabled) await openCheckout();
 })();
