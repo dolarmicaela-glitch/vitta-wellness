@@ -486,6 +486,22 @@ footer { background: var(--dark); padding: 32px 24px; text-align: center; }
 .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--cream); letter-spacing: 0.12em; margin-bottom: 8px; }
 .footer-logo span { color: var(--gold); }
 footer p { font-size: 0.72rem; color: rgba(245,239,230,0.3); }
+
+/* Accesos VITTA y pack digital: navegación independiente de Mercado Pago */
+html { scroll-behavior: smooth; }
+.vitta-quick-nav { display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:9px;padding:14px 18px;background:#f7f1e9;border-bottom:1px solid #e5d5bf;font-family:'Jost',sans-serif; }
+.vitta-quick-nav a { display:inline-block;padding:8px 13px;border:1px solid #d6bda5;border-radius:999px;color:#3d2b1f;text-decoration:none;font-size:12px;letter-spacing:.01em;background:#fffaf4; }
+.vitta-quick-nav a:hover,.vitta-quick-nav a:focus-visible { background:#3d2b1f;color:#fff; }
+.vitta-pack-offer { display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:22px;padding:28px;margin:28px auto 38px;max-width:1040px;border-radius:16px;background:#f7f0e6;border:1px solid #d9c4a8;color:#3d2b1f; }
+.vitta-pack-eyebrow { font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:#876d51; }
+.vitta-pack-offer h3 {font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(24px,4vw,34px);margin:8px 0;}
+.vitta-pack-offer p {font-size:13px;line-height:1.5;margin:0;max-width:490px;}
+.vitta-pack-price {display:flex;flex-direction:column;gap:10px;align-items:flex-start;}
+.vitta-pack-price strong {font-size:29px;white-space:nowrap;}
+.vitta-pack-price small {font-size:12px;font-weight:400;}
+.vitta-pack-price a {display:inline-block;border-radius:20px;background:#3d2b1f;color:#fff;padding:12px 19px;text-decoration:none;font-family:'Jost',sans-serif;font-size:13px;}
+.vitta-ebook-price {font-weight:600;font-family:'Jost',sans-serif;font-size:17px;color:#3d2b1f;margin:9px 0 0;}
+@media (max-width:600px){.vitta-quick-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:10px}.vitta-quick-nav a{text-align:center;font-size:11px;padding:8px 6px}.vitta-pack-offer{padding:22px 18px}.vitta-pack-price{width:100%;}.vitta-pack-price a{width:100%;text-align:center;}}
 </style>
 
 <!-- Meta Pixel Code -->
@@ -508,6 +524,14 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
 <style>[hidden]{display:none!important}.paid-placeholder{min-height:200px;opacity:.4;line-height:1.8;font-size:14px}.plan30-card.is-unlocked .plan30-list{filter:none;user-select:auto}</style>
 </head>
 <body>
+<nav class="vitta-quick-nav" aria-label="Explorar VITTA">
+  <a href="#precio-vitta">VITTA Reset</a>
+  <a href="#pack-vitta">Pack de e-books</a>
+  <a href="#ebooks-vitta">E-books individuales</a>
+  <a href="https://arvenstudio.myshopify.com/collections/all" target="_blank" rel="noopener noreferrer">Tienda VITTA</a>
+  <a href="https://wa.me/543584012123?text=Hola%20Mica%2C%20quiero%20consultar%20por%20un%20plan%20personalizado." target="_blank" rel="noopener noreferrer">Planes con Mica</a>
+  <a href="https://bit.ly/vittaweb" target="_blank" rel="noopener noreferrer">Web y turnos</a>
+</nav>
 
 <!-- FLOATING BTN -->
 <a href="pagar-vitta.html?v=mp2&start=1" class="floating-btn">
@@ -556,7 +580,7 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
 </section>
 
 <!-- PRICE -->
-<div class="price-block">
+<div class="price-block" id="precio-vitta">
   <div class="dto-badge">−58% OFF</div>
   <p class="price-label">Precio especial de lanzamiento</p>
   <p class="price-old">Antes: $ 120.000 ARS</p>
@@ -1072,14 +1096,22 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
 </style>
 
 <!-- EBOOKS A LA CARTA -->
-<section class="ebooks-carta-section">
+<section class="ebooks-carta-section" id="ebooks-vitta">
   <div class="section-label" style="color:var(--gold); text-align:center; font-size:0.72rem; letter-spacing:0.25em; text-transform:uppercase; margin-bottom:12px;">Opción alternativa</div>
   <h2 class="section-title" style="text-align:center; margin-bottom:8px;">O comprá solo el e-book<br>que <em>necesitás ahora</em></h2>
-  <p class="ebooks-carta-sub">Estos e-books también se venden de forma individual. <strong>Si ya compraste el VITTA Reset, no necesitás ninguno — ya vienen todos incluidos en tu pack.</strong></p>
+  <p class="ebooks-carta-sub">Cada e-book se puede comprar por separado a $4.980 ARS. <strong>Los 7 e-books del programa ya están incluidos en VITTA Reset; «Criar Sano, Criar Feliz» se vende por separado.</strong></p>
+
+  <div class="vitta-pack-offer" id="pack-vitta">
+    <div><p class="vitta-pack-eyebrow">Solo contenido digital · sin acompañamiento</p>
+      <h3>Los 7 e-books de VITTA en un solo ZIP</h3>
+      <p>Descargá el material completo, sin planificación personalizada de entrenamiento ni nutrición.</p></div>
+    <div class="vitta-pack-price"><strong>$19.850 <small>ARS</small></strong>
+      <a href="https://arvenstudio.myshopify.com/products/vitta-reset-programa-completo-de-ebooks" target="_blank" rel="noopener noreferrer">Comprar el pack →</a></div>
+  </div>
 
   <div class="ebooks-carta-grid" id="ebookGrid">
 
-    <div class="ebook-carta-card" data-id="1" data-price="12990" data-name="Despertá tu Metabolismo" data-link="https://go.hotmart.com/X105904056E">
+    <div class="ebook-carta-card" data-id="1" data-price="4980" data-name="Despertá tu Metabolismo" data-link="https://arvenstudio.myshopify.com/products/desperta-tu-metabolismo-vitta">
       <div class="ebook-carta-cover" style="background: linear-gradient(135deg,#3D2B1F,#6B5240);">
         <img src="cover_metabolismo.jpg" alt="Despertá tu Metabolismo" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
@@ -1087,11 +1119,12 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
         <div class="ebook-carta-cat">Metabolismo · Sueño · Hidratación</div>
         <div class="ebook-carta-title">Despertá tu Metabolismo</div>
         <div class="ebook-carta-desc">Optimizá tu ritmo circadiano, hidratación estratégica y sueño reparador en 30 días.</div>
-        <a class="btn-comprar-ebook" href="https://go.hotmart.com/X105904056E" target="_blank" rel="noopener">Comprar →</a>
+        <p class="vitta-ebook-price">$4.980 ARS</p>
+        <a class="btn-comprar-ebook" href="https://arvenstudio.myshopify.com/products/desperta-tu-metabolismo-vitta" target="_blank" rel="noopener">Comprar →</a>
       </div>
     </div>
 
-    <div class="ebook-carta-card" data-link="https://go.hotmart.com/F105908243A?dp=1">
+    <div class="ebook-carta-card" data-link="https://arvenstudio.myshopify.com/products/equilibrio-hormonal-natural-vitta">
       <div class="ebook-carta-cover" style="background: linear-gradient(135deg,#5C3A2A,#8B6F4E);">
         <img src="cover_hormonal.png" alt="Equilibrio Hormonal" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
@@ -1099,11 +1132,12 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
         <div class="ebook-carta-cat">Hormonas · Endocrino · Ciclo</div>
         <div class="ebook-carta-title">Equilibrio Hormonal Natural</div>
         <div class="ebook-carta-desc">Hormonas femeninas y masculinas, disruptores endocrinos, perimenopausia y postparto.</div>
-        <a class="btn-comprar-ebook" href="https://go.hotmart.com/F105908243A?dp=1" target="_blank" rel="noopener">Comprar →</a>
+        <p class="vitta-ebook-price">$4.980 ARS</p>
+        <a class="btn-comprar-ebook" href="https://arvenstudio.myshopify.com/products/equilibrio-hormonal-natural-vitta" target="_blank" rel="noopener">Comprar →</a>
       </div>
     </div>
 
-    <div class="ebook-carta-card" data-link="https://go.hotmart.com/T105921721W?dp=1">
+    <div class="ebook-carta-card" data-link="https://arvenstudio.myshopify.com/products/adios-hinchazon-vitta">
       <div class="ebook-carta-cover" style="background: linear-gradient(135deg,#4A3020,#7A5840);">
         <img src="cover_hinchazon.jpg" alt="Adiós Hinchazón" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
@@ -1111,11 +1145,12 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
         <div class="ebook-carta-cat">Digestión · Antiinflamatorio · Recetas</div>
         <div class="ebook-carta-title">Adiós Hinchazón + Recetas</div>
         <div class="ebook-carta-desc">Protocolo antiinflamatorio completo con recetario desinflamatorio para tu día a día.</div>
-        <a class="btn-comprar-ebook" href="https://go.hotmart.com/T105921721W?dp=1" target="_blank" rel="noopener">Comprar →</a>
+        <p class="vitta-ebook-price">$4.980 ARS</p>
+        <a class="btn-comprar-ebook" href="https://arvenstudio.myshopify.com/products/adios-hinchazon-vitta" target="_blank" rel="noopener">Comprar →</a>
       </div>
     </div>
 
-    <div class="ebook-carta-card" data-link="https://go.hotmart.com/I105977321P?dp=1">
+    <div class="ebook-carta-card" data-link="https://arvenstudio.myshopify.com/products/adios-al-sibo-y-su-inflamacion-vitta">
       <div class="ebook-carta-cover" style="background: linear-gradient(135deg,#3A2815,#6A4830);">
         <img src="cover_sibo.png" alt="Guía SIBO" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
@@ -1123,7 +1158,8 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
         <div class="ebook-carta-cat">Intestino · SIBO · FODMAP</div>
         <div class="ebook-carta-title">Guía Completa SIBO</div>
         <div class="ebook-carta-desc">Todo sobre el sobrecrecimiento bacteriano: síntomas, diagnóstico, alimentación y recuperación.</div>
-        <a class="btn-comprar-ebook" href="https://go.hotmart.com/I105977321P?dp=1" target="_blank" rel="noopener">Comprar →</a>
+        <p class="vitta-ebook-price">$4.980 ARS</p>
+        <a class="btn-comprar-ebook" href="https://arvenstudio.myshopify.com/products/adios-al-sibo-y-su-inflamacion-vitta" target="_blank" rel="noopener">Comprar →</a>
       </div>
     </div>
 
@@ -1135,7 +1171,8 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
         <div class="ebook-carta-cat">Agua · Homeostasis · Electrolitos</div>
         <div class="ebook-carta-title">El Poder del Agua y la Homeostasis</div>
         <div class="ebook-carta-desc">Tipos de agua, electrolitos esenciales, señales de deshidratación y recetas de agua funcional.</div>
-        <a class="btn-comprar-ebook" href="https://go.hotmart.com/K106096446H" target="_blank" rel="noopener">Comprar →</a>
+        <p class="vitta-ebook-price">$4.980 ARS</p>
+        <a class="btn-comprar-ebook" href="https://arvenstudio.myshopify.com/products/el-poder-del-agua-y-la-homeostasis-vitta" target="_blank" rel="noopener">Comprar →</a>
       </div>
     </div>
 
@@ -1147,11 +1184,12 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
         <div class="ebook-carta-cat">Mente · Hábitos · Relación con la comida</div>
         <div class="ebook-carta-title">Adiós Ansiedad a Comer</div>
         <div class="ebook-carta-desc">Herramientas reales para romper el ciclo ansiedad-culpa y reconectar con tu hambre real.</div>
-        <a class="btn-comprar-ebook" href="https://go.hotmart.com/O105938866T?dp=1" target="_blank" rel="noopener">Comprar →</a>
+        <p class="vitta-ebook-price">$4.980 ARS</p>
+        <a class="btn-comprar-ebook" href="https://arvenstudio.myshopify.com/products/adios-ansiedad-a-comer-vitta" target="_blank" rel="noopener">Comprar →</a>
       </div>
     </div>
 
-    <div class="ebook-carta-card" data-link="https://go.hotmart.com/D106219638O">
+    <div class="ebook-carta-card" data-link="https://arvenstudio.myshopify.com/products/ritmo-circadiano-y-descanso-vitta">
       <div class="ebook-carta-cover" style="background: linear-gradient(135deg,#0B1220,#2D1B4E);">
         <img src="cover_circadiano.jpg" alt="Ritmo Circadiano" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.85;">
         <div style="position:absolute;top:10px;right:10px;background:rgba(232,160,65,0.9);color:#fff;font-size:0.6rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:4px;">NUEVO</div>
@@ -1160,24 +1198,23 @@ src="https://www.facebook.com/tr?id=2038687353391421&ev=PageView&noscript=1"
         <div class="ebook-carta-cat">Sueño · Melatonina · Bienestar</div>
         <div class="ebook-carta-title">Ritmo Circadiano &amp; Descanso Profundo</div>
         <div class="ebook-carta-desc">Regulá tu melatonina, eliminá lo que te roba el sueño profundo y aplicá el protocolo completo para despertar descansada — todas las noches.</div>
-        <a class="btn-comprar-ebook" href="https://go.hotmart.com/D106219638O" target="_blank" rel="noopener">Comprar →</a>
+        <p class="vitta-ebook-price">$4.980 ARS</p>
+        <a class="btn-comprar-ebook" href="https://arvenstudio.myshopify.com/products/ritmo-circadiano-y-descanso-vitta" target="_blank" rel="noopener">Comprar →</a>
       </div>
     </div>
 
-    <div class="ebook-carta-card" data-link="#criar-sano">
+    <div class="ebook-carta-card" data-link="https://arvenstudio.myshopify.com/products/criar-sano-criar-feliz-vitta">
       <div class="ebook-carta-cover" style="background: linear-gradient(135deg,#FF6B35,#3DBE7A);position:relative;overflow:hidden;">
         <img src="cover_mamas.jpg" alt="Criar Sano Criar Feliz" style="width:100%;height:100%;object-fit:cover;display:block;">
-        <div style="position:absolute;top:10px;right:10px;background:#FFD600;color:#1E272E;font-size:0.6rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:4px;">PROMO</div>
+        <div style="position:absolute;top:10px;right:10px;background:#FFD600;color:#1E272E;font-size:0.6rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:4px;">E-BOOK</div>
       </div>
       <div class="ebook-carta-body">
         <div class="ebook-carta-cat">Mamás · Freezer · Viandas · Hábitos</div>
         <div class="ebook-carta-title">Criar Sano, Criar Feliz</div>
         <div class="ebook-carta-desc">9 recetas de batch cooking, 5 viandas semanales y 4 estrategias de hábitos con juego. Sin peleas, sin estrés.</div>
-        <div style="display:flex;align-items:center;gap:10px;margin:8px 0 2px;">
-          <span style="font-size:0.8rem;color:#9E8574;text-decoration:line-through;font-weight:400;">$70.000 ARS</span>
-          <span style="font-size:1.05rem;font-weight:700;color:#FF6B35;letter-spacing:0.01em;">$24.000 ARS</span>
-        </div>
-        <a class="btn-comprar-ebook" href="#" target="_blank" rel="noopener" id="btn-criar-sano">Comprar →</a>
+        
+        <p class="vitta-ebook-price">$4.980 ARS</p>
+        <a class="btn-comprar-ebook" href="https://arvenstudio.myshopify.com/products/criar-sano-criar-feliz-vitta" target="_blank" rel="noopener" id="btn-criar-sano">Comprar →</a>
       </div>
     </div>
 
