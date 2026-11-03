@@ -20,8 +20,15 @@
   <main>
     <div class="brand">VITTA</div>
     <a class="back" href="vitta-reset.html?v=49870">← Volver al programa</a>
-    <header><div class="eyebrow">Programa digital · pago único</div><h1>Tu VITTA Reset</h1><p>Completá tu compra y coordiná con Mica la entrega de tu programa.</p></header>
+    <header><div class="eyebrow">Programa digital · pago único</div><h1>Tu VITTA Reset</h1><p>Pagá con Mercado Pago y accedé a tu programa cuando se apruebe la operación.</p></header>
     <section class="status" id="payment-status" role="status" aria-live="polite" hidden><h2 id="status-title"></h2><p id="status-text"></p></section>
+    <button class="button" id="check-payment" type="button" style="margin-bottom:20px" hidden>Volver a consultar mi pago</button>
+    <section class="card" id="programme-card" style="margin-bottom:20px" hidden>
+      <div class="step">Tu programa completo</div><h2>Empezá tu VITTA Reset</h2>
+      <button class="button" id="download-program" type="button">Descargar ZIP completo</button>
+      <a class="button button-contact" href="vitta-reset.html?v=mp2#plan-30-dias">Ver mis semanas 2, 3 y 4</a>
+      <p class="fine">Podés volver a descargarlo desde este navegador. Si cambiás de dispositivo, Mica puede ayudarte a recuperar tu acceso.</p>
+    </section>
     <div class="cards">
       <section class="card" id="purchase-card" aria-labelledby="pay-title">
         <div class="step">01 · Tu compra</div><h2 id="pay-title">Pagá con Mercado Pago</h2>
@@ -32,14 +39,15 @@
         <noscript><p>Activá JavaScript para abrir el pago online o escribile a Mica por WhatsApp.</p></noscript>
       </section>
       <section class="card card-contact" aria-labelledby="contact-title">
-        <div class="step">02 · Después del pago</div><h2 id="contact-title">Recibí tu programa</h2>
-        <p>Enviá el comprobante por WhatsApp. Mica verifica la acreditación y coordina con vos la entrega de los materiales.</p>
-        <a class="button button-contact" id="mica-contact" href="https://wa.me/543584012123?text=Hola%2C%20Mica.%20Te%20escribo%20por%20mi%20compra%20de%20VITTA%20Reset.%20Quiero%20coordinar%20la%20entrega%20del%20programa." target="_blank" rel="noopener noreferrer">Comunicarte con Mica</a>
+        <div class="step">02 · Después del pago</div><h2 id="contact-title">Hablá con Mica</h2>
+        <p>Cuando se apruebe el pago, se inicia la descarga del ZIP y se habilitan las semanas 2, 3 y 4. También podés hablar con Mica por WhatsApp.</p>
+        <a class="button button-contact" id="mica-contact" href="https://wa.me/543584012123?text=Hola%2C%20Mica.%20Te%20escribo%20por%20mi%20compra%20de%20VITTA%20Reset.%20Quiero%20hacerte%20una%20consulta." target="_blank" rel="noopener noreferrer">Comunicarte con Mica</a>
         <p class="fine">También podés escribirle si tenés una consulta antes de comprar.</p>
       </section>
     </div>
     <footer>VITTA</footer>
   </main>
-  <script src="assets/vitta-checkout.js"></script>
+  <script src="assets/vitta-access.js?v=2"></script>
+  <script src="assets/vitta-checkout.js?v=2"></script>
 </body>
 </html>

@@ -1,13 +1,14 @@
 'use strict';
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { createCheckoutHandler, paymentStatusHandler, signSession } = require('../netlify/lib/mercadopago');
-const env = { MP_ACCESS_TOKEN: 'APP_USR-test-only-placeholder', URL: 'https://vitta-test.netlify.app' };
+const { createCheckoutHandler: originalCreateCheckoutHandler, paymentStatusHandler, signSession } = require('../netlify/lib/mercadopago');
+const createCheckoutHandler = options => originalCreateCheckoutHandler({ programmeReady: async () => ({ ready: true }), ...options });
+const env = { MP_ACCESS_TOKEN: 'APP_USR-test-only-placeholder', VITTA_ACCESS_SECRET: 'test-only-signing-key-with-at-least-32-characters', URL: 'https://vitta-test.netlify.app' };
 const now = 1793620800000;
 const uuid = '00000000-0000-4000-8000-000000000001';
 const reference = 'vitta-reset-' + uuid;
 const event = { httpMethod: 'POST', headers: { origin: 'https://dolarmicaela-glitch.github.io' }, body: '{"amount":1,"currency":"USD"}' };
-const session = () => signSession({ reference, amount: 49870, currency: 'ARS', expires: now + 10000 }, env.MP_ACCESS_TOKEN);
+const session = () => signSession({ purpose: 'purchase', reference, amount: 49870, currency: 'ARS', expires: now + 10000 }, env.VITTA_ACCESS_SECRET);
 const paymentEvent = () => ({ httpMethod: 'GET', headers: { origin: env.URL }, queryStringParameters: { session: session(), payment_id: '123456' } });
 const payment = { id: 123456, external_reference: reference, transaction_amount: 49870, currency_id: 'ARS', live_mode: true, status: 'approved' };
 const ok = body => ({ ok: true, json: async () => body });
@@ -69,7 +70,7 @@ test('forged and expired sessions cannot query payment information', async () =>
   const handler = paymentStatusHandler({ env, now: () => now, fetchImpl: async () => { calls++; return ok(payment); } });
   const forged = paymentEvent(); forged.queryStringParameters.session += 'a';
   assert.equal((await handler(forged)).statusCode, 400);
-  const expired = paymentEvent(); expired.queryStringParameters.session = signSession({ reference, amount: 49870, currency: 'ARS', expires: now - 1 }, env.MP_ACCESS_TOKEN);
+  const expired = paymentEvent(); expired.queryStringParameters.session = signSession({ purpose: 'purchase', reference, amount: 49870, currency: 'ARS', expires: now - 1 }, env.VITTA_ACCESS_SECRET);
   assert.equal((await handler(expired)).statusCode, 400);
   assert.equal(calls, 0);
 });
@@ -82,54 +83,68 @@ test('pending payments remain pending and are never reported as approved', async
 const fs = require('node:fs');
 const vm = require('node:vm');
 const frontendSource = fs.readFileSync(require.resolve('../assets/vitta-checkout.js'), 'utf8');
+const accessSource = fs.readFileSync(require.resolve('../assets/vitta-access.js'), 'utf8');
 async function runFrontend(search, status, hostname = 'vitta-test.netlify.app') {
   const nodes = new Map();
   const node = id => {
-    if (!nodes.has(id)) nodes.set(id, { id, textContent: '', hidden: false, disabled: id === 'pay-button', dataset: {}, addEventListener(name, handler) { this[name] = handler; } });
+    if (id === 'program-access' || id === 'program-download-frame') return null;
+    if (!nodes.has(id)) nodes.set(id, { id, textContent: '', hidden: ['programme-card', 'download-program'].includes(id), disabled: id === 'pay-button', dataset: {}, addEventListener(name, handler) { this[name] = handler; } });
     return nodes.get(id);
   };
   const navigations = [];
+  const downloads = [];
   const requests = [];
-  await vm.runInNewContext(frontendSource, {
-    document: { getElementById: node },
-    location: { search, hostname, origin: 'https://' + hostname, href: 'https://' + hostname + '/pagar-vitta.html' + search, assign: url => navigations.push(url) },
+  const values = new Map();
+  const storage = { getItem: k => values.get(k) || null, setItem: (k,v) => values.set(k,v), removeItem: k => values.delete(k) };
+  const context = vm.createContext({
+    document: { getElementById: node, createElement: tag => ({ tag }), body: { appendChild: n => downloads.push(n) } },
+    location: { search, hostname, origin: 'https://' + hostname, pathname: '/pagar-vitta.html', href: 'https://' + hostname + '/pagar-vitta.html' + search, assign: url => navigations.push(url) },
+    history: { replaceState() {} }, localStorage: storage, sessionStorage: storage,
     URL, URLSearchParams, AbortSignal, encodeURIComponent,
     fetch: async (url, options) => {
       requests.push(String(url));
       if (String(url).includes('content/site.json')) return ok({ whatsapp: '543584012123', price_vitta_reset: '49.870' });
-      if (String(url).includes('mp-payment-status')) return ok({ status, payment_id: '123456' });
+      if (String(url).includes('mp-program-access')) return ok({ status, payment_id: '123456', access_pass: 'signed-access', weeks: [{week:2},{week:3},{week:4}], download_url: 'https://vitta-test.netlify.app/.netlify/functions/mp-program-download?ticket=signed' });
       throw new Error('provider unavailable');
     }
   });
-  return { node, requests, navigations };
+  context.window = context;
+  vm.runInContext(accessSource, context);
+  await vm.runInContext(frontendSource, context);
+  return { node, requests, navigations, downloads };
 }
 
-test('a forged success query cannot display an approved purchase', async () => {
+test('a forged success query cannot unlock content or trigger a download', async () => {
   const ui = await runFrontend('?result=success');
   assert.equal(ui.node('payment-status').dataset.state, 'unknown');
   assert.equal(ui.node('pay-button').hidden, true);
+  assert.equal(ui.node('programme-card').hidden, true);
+  assert.equal(ui.downloads.length, 0);
   assert.equal(ui.requests.length, 1);
 });
 
-test('the browser waits for provider verification and distinguishes pending from approved', async () => {
+test('only a verified approved response enables the ZIP and starts the download', async () => {
   const pending = await runFrontend('?session=signed&payment_id=123456', 'pending');
   assert.equal(pending.node('payment-status').dataset.state, 'pending');
   assert.equal(pending.node('pay-button').hidden, true);
+  assert.equal(pending.node('programme-card').hidden, true);
+  assert.equal(pending.downloads.length, 0);
   const approved = await runFrontend('?session=signed&payment_id=123456', 'approved');
   assert.equal(approved.node('payment-status').dataset.state, 'approved');
   assert.equal(approved.node('purchase-card').hidden, true);
+  assert.equal(approved.node('programme-card').hidden, false);
   assert.match(approved.node('mica-contact').href, /123456/);
+  assert.equal(approved.downloads.length, 1);
   assert.equal(approved.navigations.length, 0);
 });
 
-test('an unconfigured GitHub Pages copy keeps payment disabled and offers WhatsApp', async () => {
+test('an unconfigured GitHub Pages copy keeps payment disabled', async () => {
   const ui = await runFrontend('', undefined, 'dolarmicaela-glitch.github.io');
   assert.equal(ui.node('pay-button').disabled, true);
   assert.equal(ui.node('payment-error').hidden, false);
-  assert.match(ui.node('mica-contact').href, /^https:\/\/wa\.me\/543584012123/);
 });
 
-test('a checkout network failure allows a retry without navigating to an unverified URL', async () => {
+test('a checkout network failure allows retry without navigating', async () => {
   const ui = await runFrontend('');
   await ui.node('pay-button').click();
   assert.equal(ui.node('pay-button').disabled, false);

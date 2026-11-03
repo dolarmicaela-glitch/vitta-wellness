@@ -11,15 +11,16 @@ class CheckoutError extends Error {
 
 function settings(env = process.env) {
   const accessToken = env.MP_ACCESS_TOKEN;
+  const signingKey = env.VITTA_ACCESS_SECRET;
   const rawUrl = env.CHECKOUT_SITE_URL || env.URL || site.checkout_api_base_url;
   const amount = Number(String(site.price_vitta_reset).replace(/\./g, '').replace(',', '.'));
-  if (!accessToken || !rawUrl) throw new CheckoutError(503, 'El pago online no está disponible en este momento.');
+  if (!accessToken || !signingKey || signingKey.length < 32 || !rawUrl) throw new CheckoutError(503, 'El pago online no está disponible en este momento.');
   let url;
   try { url = new URL(rawUrl); } catch { throw new CheckoutError(503, 'El pago online no está disponible en este momento.'); }
   if (url.protocol !== 'https:' || url.username || url.password || !Number.isFinite(amount) || amount <= 0) {
     throw new CheckoutError(503, 'El pago online no está disponible en este momento.');
   }
-  return { accessToken, origin: url.origin, amount, currency: 'ARS', whatsapp: site.whatsapp };
+  return { accessToken, signingKey, origin: url.origin, amount, currency: 'ARS', whatsapp: site.whatsapp };
 }
 
 function response(statusCode, data, origin) {
@@ -73,7 +74,7 @@ function safeError(error, origin) {
     { error: error instanceof CheckoutError ? error.message : 'No pudimos procesar la solicitud. Escribile a Mica para que te ayude.' }, origin);
 }
 
-function createCheckoutHandler({ env, fetchImpl, now = () => Date.now(), uuid = randomUUID } = {}) {
+function createCheckoutHandler({ env, fetchImpl, now = () => Date.now(), uuid = randomUUID, programmeReady = () => require('./private-data').programmeManifest() } = {}) {
   return async function handler(event) {
     let origin;
     try {
@@ -83,9 +84,10 @@ function createCheckoutHandler({ env, fetchImpl, now = () => Date.now(), uuid = 
       if (event.httpMethod !== 'POST') return response(405, { error: 'Método no permitido.' }, origin);
       if (!origin) throw new CheckoutError(403, 'Solicitud no permitida.');
       if ((event.body || '').length > 2048) throw new CheckoutError(413, 'Solicitud demasiado grande.');
+      if (!await programmeReady()) throw new CheckoutError(503, 'Estamos preparando el programa. Escribile a Mica para consultar.');
       const reference = 'vitta-reset-' + uuid();
       const expires = now() + 24 * 60 * 60 * 1000;
-      const session = signSession({ reference, amount: config.amount, currency: config.currency, expires }, config.accessToken);
+      const session = signSession({ purpose: 'purchase', reference, amount: config.amount, currency: config.currency, expires: now() + 10 * 365 * 24 * 60 * 60 * 1000 }, config.signingKey);
       const returnUrl = new URL('/pagar-vitta.html', config.origin);
       returnUrl.searchParams.set('session', session);
       const backUrls = {};
@@ -111,7 +113,7 @@ function createCheckoutHandler({ env, fetchImpl, now = () => Date.now(), uuid = 
       if (checkoutUrl.protocol !== 'https:' || !['www.mercadopago.com.ar', 'mercadopago.com.ar', 'www.mercadopago.com', 'mercadopago.com'].includes(checkoutUrl.hostname) || checkoutUrl.username || checkoutUrl.password) {
         throw new CheckoutError(502, 'No pudimos abrir el pago. Intentá de nuevo.');
       }
-      return response(200, { checkout_url: checkoutUrl.href }, origin);
+      return response(200, { checkout_url: checkoutUrl.href, session }, origin);
     } catch (error) { return safeError(error, origin); }
   };
 }
@@ -125,7 +127,8 @@ function paymentStatusHandler({ env, fetchImpl, now = () => Date.now() } = {}) {
       if (event.httpMethod !== 'GET') return response(405, { error: 'Método no permitido.' }, origin);
       const query = event.queryStringParameters || {};
       if (!/^\d{1,25}$/.test(query.payment_id || '')) throw new CheckoutError(400, 'No pudimos identificar el pago.');
-      const session = readSession(query.session, config.accessToken, now());
+      const session = readSession(query.session, config.signingKey, now());
+      if (session.purpose !== 'purchase') throw new CheckoutError(400, 'No pudimos identificar esta compra.');
       const payment = await mercadoRequest('/v1/payments/' + query.payment_id, { method: 'GET' }, config, fetchImpl);
       if (payment.external_reference !== session.reference || payment.currency_id !== session.currency || Number(payment.transaction_amount) !== session.amount || payment.live_mode !== true) {
         throw new CheckoutError(409, 'El pago no corresponde a esta compra. Escribile a Mica para revisarlo.');
@@ -137,4 +140,4 @@ function paymentStatusHandler({ env, fetchImpl, now = () => Date.now() } = {}) {
   };
 }
 
-module.exports = { createCheckoutHandler, paymentStatusHandler, signSession, readSession, settings };
+module.exports = { createCheckoutHandler, paymentStatusHandler, signSession, readSession, settings, CheckoutError, mercadoRequest, requestOrigin, response, safeError };
